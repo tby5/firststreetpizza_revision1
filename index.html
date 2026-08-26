@@ -3,46 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Street Pizza & Espresso | San Jose</title>
-    <meta name="description" content="Downtown San Jose's premier spot for authentic pizza, craft beer on tap and fresh espressos. Visit us on First Street in Downtown San Jose.">
+    <title>First Street Pizza & Espresso | San Jose's Culinary Destination</title>
+    <meta name="description" content="Handcrafted pizzas, award-worthy espresso, and craft beers in Downtown San Jose. From morning shots to late-night pints, First Street is where flavor meets community.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 49ers Red & Gold inspired palette */
-            --dough:       #fffdf7;
-            --dough-dark:  #f4ede1;
-            --tomato:      #AA0000;   /* 49ers Red */
-            --tomato-dark: #7a0000;   /* Deep red for hover states */
-            --crust:       #B3995D;   /* 49ers Gold */
-            --cheese:      #e5c378;   /* Softer gold for badges and UI backgrounds */
-            --basil:       #27633a;   /* Fresh green */
-            --charcoal:    #2c1e16;   /* Softer, warmer dark text */
-            --wood:        #4a3324;
+            --sage:        #2d5a3d;   /* Deep sage primary */
+            --leaf:        #4a8659;   /* Rich green accent */
+            --moss:        #6ba86f;   /* Softer moss green */
+            --mint:        #d4e8d8;   /* Pale mint background */
+            --cream:       #fffdf7;   /* Warm cream */
+            --charcoal:    #2c1e16;   /* Warm dark */
+            --gold:        #c9a961;   /* Warm gold for accents */
+            --clay:        #c4956d;   /* Warm earth tone */
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Lora', Georgia, serif;
-            background-color: var(--dough);
+            background-color: var(--cream);
             color: var(--charcoal);
             overflow-x: hidden;
         }
 
-        /* ── GRAIN OVERLAY ── */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-            opacity: 0.03;
+            opacity: 0.02;
             pointer-events: none;
             z-index: 9999;
         }
 
-        /* ── NAV ── */
+        /* ── NAVIGATION ── */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -51,30 +48,31 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 3rem;
-            background: rgba(255, 253, 247, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 253, 247, 0.97);
+            backdrop-filter: blur(12px);
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
+            box-shadow: 0 0 0 rgba(45, 90, 61, 0);
         }
         nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-bottom: 3px solid var(--tomato);
+            box-shadow: 0 8px 32px rgba(45, 90, 61, 0.12);
+            border-bottom: 3px solid var(--leaf);
         }
         .nav-brand {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             font-weight: 900;
             letter-spacing: 0.02em;
-            color: var(--tomato);
+            color: var(--sage);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .nav-brand:hover { color: var(--crust); }
+        .nav-brand:hover { color: var(--leaf); transform: scale(1.02); }
         
         .hamburger {
             display: none;
             cursor: pointer;
-            color: var(--tomato);
+            color: var(--leaf);
         }
         
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -86,141 +84,154 @@
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            transition: color 0.2s, transform 0.2s;
+            transition: all 0.2s;
             display: inline-block;
+            position: relative;
         }
-        .nav-links a:hover { 
-            color: var(--tomato); 
-            transform: translateY(-2px);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--leaf);
+            transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--leaf); }
 
         /* ── HERO ── */
         .hero {
             position: relative;
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0 3rem;
             overflow: hidden;
-            background-color: var(--charcoal);
+            background: linear-gradient(135deg, var(--sage) 0%, var(--charcoal) 100%);
         }
         .hero-bg-img {
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(to right, rgba(44,30,22,0.9) 0%, rgba(44,30,22,0.4) 50%, rgba(44,30,22,0.1) 100%),
+                linear-gradient(to right, rgba(45, 90, 61, 0.85) 0%, rgba(45, 90, 61, 0.5) 50%, rgba(45, 90, 61, 0.1) 100%),
                 url('images/IMG_3433.webp');
             background-size: cover;
             background-position: center;
-            animation: zoomBg 20s infinite alternate linear;
+            animation: heroZoom 25s infinite alternate linear;
             z-index: 0;
         }
-        @keyframes zoomBg {
+        @keyframes heroZoom {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            100% { transform: scale(1.08); }
         }
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin-top: 5rem;
+            max-width: 850px;
+            margin-top: 6rem;
         }
         .hero-badge {
             display: inline-block;
-            background: var(--cheese);
-            color: var(--wood);
+            background: rgba(212, 232, 216, 0.2);
+            border: 2px solid var(--mint);
+            color: var(--cream);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 50px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(229, 195, 120, 0.4);
+            backdrop-filter: blur(10px);
             opacity: 0;
-            animation: bounceIn 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInRight 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
         }
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 8vw, 7.5rem);
+            font-size: clamp(4.2rem, 9vw, 8rem);
             font-weight: 900;
             line-height: 1;
             letter-spacing: -0.02em;
-            color: var(--dough);
-            margin-bottom: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 1.8rem;
             opacity: 0;
-            animation: fadeUp 0.8s 0.4s forwards;
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
+            animation: fadeUp 0.9s 0.4s forwards;
+            text-shadow: 3px 6px 20px rgba(0, 0, 0, 0.5);
         }
         .hero h1 em {
             font-style: italic;
-            color: var(--tomato);
+            color: var(--mint);
             display: block;
         }
         .hero-sub {
             font-family: 'Lora', serif;
-            font-size: 1.2rem;
-            max-width: 45ch;
-            line-height: 1.6;
-            color: rgba(255, 253, 247, 0.9);
-            margin-bottom: 2.5rem;
+            font-size: 1.3rem;
+            max-width: 50ch;
+            line-height: 1.7;
+            color: rgba(255, 253, 247, 0.92);
+            margin-bottom: 2.8rem;
             opacity: 0;
-            animation: fadeUp 0.8s 0.6s forwards;
+            animation: fadeUp 0.9s 0.6s forwards;
         }
         .hero-ctas {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.4rem;
             flex-wrap: wrap;
             opacity: 0;
-            animation: fadeUp 0.8s 0.8s forwards;
+            animation: fadeUp 0.9s 0.85s forwards;
         }
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.7rem;
             text-decoration: none;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 1rem 2.2rem;
+            padding: 1.1rem 2.4rem;
             border-radius: 50px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
         }
         .btn-primary {
-            background: var(--tomato);
-            color: var(--dough);
-            box-shadow: 0 8px 25px rgba(170, 0, 0, 0.4);
+            background: var(--leaf);
+            color: var(--cream);
+            box-shadow: 0 10px 35px rgba(74, 134, 89, 0.4);
         }
         .btn-primary:hover {
-            background: var(--tomato-dark);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(170, 0, 0, 0.6);
+            background: var(--moss);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(74, 134, 89, 0.6);
         }
         .btn-secondary {
-            background: rgba(255, 253, 247, 0.1);
-            color: var(--dough);
-            border: 2px solid var(--dough);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 253, 247, 0.12);
+            color: var(--cream);
+            border: 2px solid var(--mint);
+            backdrop-filter: blur(8px);
         }
         .btn-secondary:hover {
-            background: var(--dough);
-            color: var(--charcoal);
-            transform: translateY(-5px) scale(1.02);
+            background: var(--cream);
+            color: var(--sage);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
         .btn svg { width: 18px; height: 18px; }
 
         /* ── MARQUEE ── */
         .marquee-wrap {
-            background: var(--cheese);
-            padding: 1rem 0;
+            background: var(--moss);
+            padding: 1.2rem 0;
             overflow: hidden;
             white-space: nowrap;
             border-top: 4px solid var(--charcoal);
@@ -228,254 +239,313 @@
         }
         .marquee-track {
             display: inline-block;
-            animation: marquee 25s linear infinite;
+            animation: marquee 28s linear infinite;
         }
         .marquee-track span {
             font-family: 'Playfair Display', serif;
             font-size: 1.2rem;
             font-weight: 900;
             font-style: italic;
-            color: var(--charcoal);
-            padding: 0 2rem;
+            color: var(--cream);
+            padding: 0 2.5rem;
         }
         .marquee-track span::after {
             content: '🍕';
             margin-left: 3rem;
             font-style: normal;
         }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
 
-        /* ── SHARED SECTION ── */
-        section { padding: 7rem 3rem; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
+        /* ── SECTIONS ── */
+        section { padding: 7.5rem 3rem; }
+        .section-header { text-align: center; margin-bottom: 4.5rem; }
         .section-label {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--tomato);
-            margin-bottom: 1rem;
+            color: var(--leaf);
+            margin-bottom: 1.2rem;
             display: block;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
         }
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
             font-weight: 900;
             line-height: 1.1;
-            color: var(--charcoal);
+            color: var(--sage);
+            opacity: 0;
+            animation: fadeUp 0.6s 0.15s ease forwards;
         }
-        .section-title em { color: var(--crust); }
+        .section-title em { color: var(--moss); font-style: italic; }
+
+        /* ── WHY US SECTION ── */
+        .why-us-section {
+            background: linear-gradient(135deg, var(--mint) 0%, rgba(212, 232, 216, 0.5) 100%);
+            position: relative;
+        }
+        .why-us-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(74, 134, 89, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: floatSlow 20s ease-in-out infinite;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+        .why-us-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .why-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(45, 90, 61, 0.08);
+            border-left: 5px solid var(--leaf);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left;
+        }
+        .why-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(45, 90, 61, 0.15);
+            border-left-color: var(--moss);
+        }
+        .why-card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+        }
+        .why-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+        .why-card p {
+            font-size: 1.05rem;
+            color: var(--charcoal);
+            line-height: 1.8;
+        }
 
         /* ── ABOUT ── */
         .about-section {
-            background-color: var(--dough);
+            background: var(--cream);
             position: relative;
         }
         .about-section::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(170, 0, 0, 0.03) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(39, 99, 58, 0.04) 0%, transparent 40%);
+            bottom: 0; right: -10%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(74, 134, 89, 0.05) 0%, transparent 70%);
             pointer-events: none;
         }
         #about {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
-        .about-text { position: relative; z-index: 1; }
         .about-text p {
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--wood);
-            margin-bottom: 1.5rem;
+            line-height: 1.85;
+            color: var(--charcoal);
+            margin-bottom: 1.8rem;
+        }
+        .about-text p:first-of-type {
+            font-size: 1.2rem;
+            color: var(--sage);
+            font-weight: 500;
         }
         .about-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
+            margin-top: 3.5rem;
         }
         .stat {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-bottom: 4px solid var(--crust);
+            background: linear-gradient(135deg, rgba(74, 134, 89, 0.08) 0%, rgba(107, 168, 111, 0.04) 100%);
+            padding: 2rem;
+            border-radius: 14px;
+            border: 2px solid rgba(74, 134, 89, 0.2);
             text-align: center;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .stat:hover { transform: translateY(-8px); border-bottom-color: var(--tomato); }
+        .stat:hover {
+            transform: translateY(-8px);
+            border-color: var(--leaf);
+            box-shadow: 0 15px 40px rgba(74, 134, 89, 0.12);
+        }
         .stat-num {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 900;
-            color: var(--tomato);
+            color: var(--leaf);
             line-height: 1;
             margin-bottom: 0.5rem;
         }
         .stat-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--basil);
+            color: var(--sage);
         }
-        .about-image-col { position: relative; }
         .about-img-frame {
             position: relative;
             aspect-ratio: 4/5;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: -20px 20px 0 var(--cheese), 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: -25px 25px 0 var(--mint), 0 25px 60px rgba(45, 90, 61, 0.2);
         }
         .about-img-frame img {
             width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.8s ease, filter 0.5s ease;
-            filter: saturate(1.1) contrast(1.05);
+            filter: saturate(1.15) contrast(1.08);
         }
-        .about-img-frame:hover img { 
-            transform: scale(1.08); 
-            filter: saturate(1.3) contrast(1.1);
+        .about-img-frame:hover img {
+            transform: scale(1.08);
+            filter: saturate(1.3) contrast(1.12);
         }
-        .about-img-badge {
-            position: absolute;
-            bottom: 2rem;
-            right: -2rem;
-            background: var(--basil);
-            color: var(--dough);
-            padding: 1.5rem;
-            border-radius: 50%;
-            width: 140px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.2;
-            box-shadow: 0 10px 25px rgba(39, 99, 58, 0.4);
-            animation: spinSlow 15s linear infinite;
-        }
-        .about-img-badge span { animation: spinSlowReverse 15s linear infinite; display: block; }
-        @keyframes spinSlow { 100% { transform: rotate(360deg); } }
-        @keyframes spinSlowReverse { 100% { transform: rotate(-360deg); } }
 
         /* ── MENU SECTION ── */
         .menu-section {
-            background-color: var(--dough-dark);
+            background: linear-gradient(180deg, #f9faf7 0%, var(--mint) 100%);
             position: relative;
         }
-        #menu-inner { max-width: 1200px; margin: 0 auto; }
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -15%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(107, 168, 111, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            animation: floatSlow 25s ease-in-out infinite;
+        }
+        #menu-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
 
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 4rem;
+            gap: 1.2rem;
+            margin-bottom: 4.5rem;
             flex-wrap: wrap;
         }
         .menu-tab {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             letter-spacing: 0.1em;
-            color: var(--wood);
+            color: var(--charcoal);
             background: white;
             border: 2px solid transparent;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 20px rgba(45, 90, 61, 0.08);
         }
-        .menu-tab:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
-            color: var(--tomato);
+        .menu-tab:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(45, 90, 61, 0.15);
+            color: var(--leaf);
+            border-color: var(--leaf);
         }
         .menu-tab.active {
-            background: var(--tomato);
+            background: var(--leaf);
             color: white;
-            border-color: var(--tomato);
+            box-shadow: 0 12px 40px rgba(74, 134, 89, 0.3);
         }
 
         .menu-category { margin-bottom: 5rem; }
         .menu-category.hidden { display: none; }
-        
+
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        /* Card-based Menu Items */
         .menu-card {
             background: white;
-            padding: 2rem;
+            padding: 2.2rem;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border-top: 4px solid transparent;
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 35px rgba(45, 90, 61, 0.06);
+            border-top: 5px solid transparent;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         .menu-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border-top-color: var(--tomato);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(45, 90, 61, 0.12);
+            border-top-color: var(--leaf);
         }
         .menu-card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             gap: 1rem;
         }
         .item-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 900;
-            color: var(--charcoal);
+            color: var(--sage);
             line-height: 1.2;
         }
         .chef-pick {
             display: inline-block;
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.7rem;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            background: var(--cheese);
-            color: var(--wood);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
+            background: var(--leaf);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
             font-weight: 600;
             margin-top: 0.5rem;
         }
         .item-desc {
-            font-size: 1.05rem; /* Increased readability */
-            color: var(--wood);
-            line-height: 1.6;
+            font-size: 1.08rem;
+            color: var(--charcoal);
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
         .item-note {
-            font-size: 0.85rem;
-            color: var(--basil);
+            font-size: 0.9rem;
+            color: var(--moss);
             font-style: italic;
             margin-top: -1rem;
             margin-bottom: 1.5rem;
         }
-        
-        /* Interactive Pricing Bubbles */
+
         .price-row {
             display: flex;
             gap: 0.8rem;
@@ -484,73 +554,149 @@
         }
         .price-bubble {
             flex: 1;
-            background: var(--dough);
+            background: linear-gradient(135deg, rgba(74, 134, 89, 0.08) 0%, rgba(107, 168, 111, 0.04) 100%);
             text-align: center;
-            padding: 0.8rem 0.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: background 0.2s;
+            padding: 1rem 0.7rem;
+            border-radius: 10px;
+            border: 1px solid rgba(74, 134, 89, 0.15);
+            transition: all 0.3s;
         }
-        .menu-card:hover .price-bubble { background: rgba(229, 195, 120, 0.15); }
+        .menu-card:hover .price-bubble {
+            background: rgba(74, 134, 89, 0.12);
+            border-color: var(--leaf);
+        }
         .price-bubble span {
             display: block;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--wood);
-            margin-bottom: 0.2rem;
+            letter-spacing: 0.12em;
+            color: var(--sage);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
         }
         .price-bubble strong {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--tomato);
+            font-size: 1.15rem;
+            color: var(--leaf);
+            font-weight: 900;
+        }
+
+        /* ── EXPERIENCE SECTION ── */
+        .experience-section {
+            background: var(--sage);
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .experience-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 232, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(107, 168, 111, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .experience-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem;
+            max-width: 900px;
+        }
+        .experience-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.2rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .experience-sub {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            color: rgba(255, 253, 247, 0.9);
+            line-height: 1.8;
+            max-width: 55ch;
+            margin: 0 auto 2.5rem;
+        }
+        .experience-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 2px solid rgba(212, 232, 216, 0.3);
+        }
+        .exp-stat {
+            color: var(--mint);
+            text-align: center;
+        }
+        .exp-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--mint);
+        }
+        .exp-stat-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 253, 247, 0.8);
+            margin-top: 0.5rem;
         }
 
         /* ── GALLERY ── */
         #gallery-section {
-            background-color: var(--charcoal);
-            padding: 7rem 3rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%);
+            padding: 7.5rem 3rem;
         }
-        #gallery-section .section-label { color: var(--crust); }
-        #gallery-section .section-title { color: white; }
+        #gallery-section .section-label { color: var(--leaf); }
+        #gallery-section .section-title { color: var(--sage); }
         .gallery-grid {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-auto-rows: 280px;
-            gap: 1rem;
+            gap: 1.2rem;
         }
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 16px;
+            cursor: pointer;
         }
         .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
         .gallery-item:nth-child(4) { grid-column: span 2; }
-        
+
         .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
-            filter: brightness(0.9) saturate(1.2);
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.7s;
+            filter: brightness(0.88) saturate(1.25);
         }
         .gallery-item:hover img {
-            transform: scale(1.1) rotate(1deg);
+            transform: scale(1.12) rotate(2deg);
             filter: brightness(1.1) saturate(1.4);
         }
         .gallery-caption {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(44,30,22,0.9) 0%, transparent 60%);
-            padding: 2rem;
+            background: linear-gradient(to top, rgba(45, 90, 61, 0.95) 0%, transparent 60%);
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .gallery-item:hover .gallery-caption {
             opacity: 1;
@@ -558,99 +704,133 @@
         }
         .gallery-caption-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-style: italic;
-            font-weight: 700;
-            color: white;
+            font-weight: 900;
+            color: var(--mint);
         }
         .gallery-caption-sub {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--crust);
-            margin-top: 0.3rem;
+            color: var(--gold);
+            margin-top: 0.5rem;
         }
 
         /* ── LOCATION / HOURS ── */
         .location-section {
-            background-color: var(--dough);
-            background-image: radial-gradient(circle at center, rgba(170, 0, 0, 0.03) 0%, transparent 70%);
+            background: var(--cream);
+            position: relative;
         }
-        #location { max-width: 1200px; margin: 0 auto; }
+        .location-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(74, 134, 89, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #location { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
         .location-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 3.5rem;
         }
         .info-card {
             background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            border-top: 6px solid var(--tomato);
+            padding: 3.5rem;
+            border-radius: 18px;
+            box-shadow: 0 15px 50px rgba(45, 90, 61, 0.08);
+            border-top: 6px solid var(--leaf);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(45, 90, 61, 0.15);
         }
         .info-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-style: italic;
-            color: var(--charcoal);
-            margin-bottom: 2rem;
+            color: var(--sage);
+            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
+            font-weight: 900;
         }
         .info-card h3::before {
             content: '';
             display: block;
-            width: 40px; height: 3px;
-            background: var(--crust);
+            width: 45px; height: 3px;
+            background: var(--moss);
         }
         .info-card address p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--wood);
-            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.75;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
         }
-        .info-card strong { color: var(--charcoal); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; letter-spacing: 0.05em; display: block; margin-bottom: 0.3rem; }
-        .info-card a { color: var(--tomato); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-        .info-card a:hover { color: var(--tomato-dark); }
+        .info-card strong {
+            color: var(--sage);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.08em;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .info-card a {
+            color: var(--leaf);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .info-card a:hover {
+            color: var(--sage);
+            text-decoration: underline;
+        }
 
         .hours-list { list-style: none; }
         .hours-list li {
             display: flex;
             justify-content: space-between;
-            padding: 1rem 0;
-            font-size: 1.05rem;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-            color: var(--wood);
+            padding: 1.2rem 0;
+            font-size: 1.08rem;
+            border-bottom: 1px dashed rgba(45, 90, 61, 0.15);
+            color: var(--charcoal);
         }
         .hours-list li:last-child { border-bottom: none; }
-        .hours-list .day { font-weight: 600; color: var(--charcoal); }
+        .hours-list .day { font-weight: 700; color: var(--sage); }
         .hours-list li.today {
-            background: rgba(229, 195, 120, 0.15);
-            margin: 0 -1.5rem;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--cheese);
+            background: rgba(107, 168, 111, 0.12);
+            margin: 0.5rem -1.5rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--moss);
         }
         .hours-list li.today .day,
-        .hours-list li.today .time { color: var(--tomato); font-weight: 700; }
+        .hours-list li.today .time {
+            color: var(--leaf);
+            font-weight: 900;
+        }
 
         .map-frame {
             grid-column: 1 / -1;
-            height: 400px;
-            border-radius: 16px;
+            height: 420px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 50px rgba(45, 90, 61, 0.12);
             border: 4px solid white;
         }
-        .map-frame iframe { width: 100%; height: 100%; border: none; filter: contrast(1.1) saturate(1.2); }
+        .map-frame iframe { width: 100%; height: 100%; border: none; }
 
         /* ── FOOTER ── */
         footer {
-            background: var(--charcoal);
-            padding: 4rem 3rem 2rem;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--charcoal) 100%);
+            padding: 5rem 3rem 2.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -658,151 +838,95 @@
         footer::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; height: 6px;
-            background: linear-gradient(90deg, var(--tomato), var(--crust), var(--basil));
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--leaf), var(--moss), var(--mint));
         }
         .footer-brand {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            color: white;
-            margin-bottom: 0.5rem;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
         }
         .footer-tagline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--crust);
-            margin-bottom: 2rem;
+            color: var(--mint);
+            margin-bottom: 2.5rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
         }
         .social-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px; height: 45px;
-            background: rgba(255,255,255,0.1);
-            color: white;
+            width: 48px; height: 48px;
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--cream);
             border-radius: 50%;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-bottom: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         .social-link:hover {
-            background: var(--tomato);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(170, 0, 0, 0.4);
+            background: var(--leaf);
+            transform: translateY(-6px) scale(1.15);
+            box-shadow: 0 12px 30px rgba(74, 134, 89, 0.4);
+            border-color: var(--leaf);
         }
         .footer-copy {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-            margin-top: 1rem;
-        }
-
-        /* ── ATMOSPHERE BAND ── */
-        .atmosphere-band {
-            position: relative;
-            height: 72vh;
-            min-height: 520px;
-            background-image: url('images/IMG_3433.jpeg');
-            background-size: cover;
-            background-position: center 38%;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .atmosphere-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(44, 30, 22, 0.65) 0%,
-                rgba(100, 0, 0, 0.45) 45%,
-                rgba(44, 30, 22, 0.82) 100%
-            );
-        }
-        .atmosphere-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 2rem 1.5rem;
-            max-width: 750px;
-        }
-        .atmosphere-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 900;
-            color: var(--dough);
-            line-height: 1.05;
-            margin: 1rem 0 1.5rem;
-            text-shadow: 2px 4px 24px rgba(0,0,0,0.55);
-            letter-spacing: -0.01em;
-        }
-        .atmosphere-heading em {
-            color: var(--crust);
-            font-style: italic;
-            display: block;
-        }
-        .atmosphere-sub {
-            font-family: 'Lora', serif;
-            font-size: 1.15rem;
-            color: rgba(255, 253, 247, 0.88);
-            line-height: 1.75;
-            max-width: 46ch;
-            margin: 0 auto 2.5rem;
-        }
-        .atmosphere-pill {
-            display: inline-block;
-            background: rgba(229, 195, 120, 0.18);
-            border: 2px solid var(--crust);
-            color: var(--crust);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            padding: 0.55rem 1.6rem;
-            border-radius: 50px;
-            margin-bottom: 1.2rem;
-            backdrop-filter: blur(6px);
-        }
-        @media (max-width: 768px) {
-            .atmosphere-band {
-                background-attachment: scroll;
-                height: auto;
-                min-height: 460px;
-                padding: 5rem 1.5rem;
-            }
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.45);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 2.5rem;
+            margin-top: 2rem;
         }
 
         /* ── ANIMATIONS ── */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-25px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .reveal.visible { opacity: 1; transform: none; }
 
+        /* ── SCROLL PARALLAX ── */
+        .parallax-item {
+            transition: transform 0.1s ease-out;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 992px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 250px;
+            }
+            .gallery-item:nth-child(1), .gallery-item:nth-child(4) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
         }
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
             .hamburger { display: block; }
-            .nav-links { 
+            .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -815,44 +939,50 @@
                 overflow: hidden;
                 transition: max-height 0.3s ease-out;
                 align-items: center;
-                border-bottom: 0px solid var(--tomato);
+                border-bottom: 0px solid var(--leaf);
             }
             .nav-links.open {
-                max-height: 250px;
-                padding: 1.5rem 0;
+                max-height: 280px;
+                padding: 1.8rem 0;
                 border-bottom-width: 3px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
             }
-            .nav-links a { font-size: 1.1rem; }
             .hero { padding: 0 1.5rem; text-align: center; align-items: center; }
-            .hero-content { margin-top: 2rem; }
+            .hero-content { margin-top: 1.5rem; }
             .hero-ctas { justify-content: center; }
-            section { padding: 4rem 1.5rem; }
-            #about { grid-template-columns: 1fr; gap: 4rem; }
-            .about-image-col { order: -1; padding: 0 2rem; }
-            .about-img-badge { width: 100px; height: 100px; font-size: 0.9rem; right: 0; bottom: -1rem; }
+            section { padding: 5rem 1.5rem; }
+            #about { grid-template-columns: 1fr; gap: 3.5rem; }
+            .about-image-col { order: -1; }
             .location-grid { grid-template-columns: 1fr; }
-            .map-frame { height: 300px; }
-            .price-row { flex-direction: column; }
+            .map-frame { height: 350px; }
+            .why-us-grid { grid-template-columns: 1fr; }
+            .experience-stats { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
-        .green-text { color: var(--basil); /* Uses your pre-defined fresh green basil color */
-                    
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .btn { padding: 0.9rem 1.8rem; font-size: 0.9rem; }
+            .about-stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
     <nav id="navbar">
         <a href="#" class="nav-brand">First Street Pizza & Espresso</a>
         <div class="hamburger" id="hamburger">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="#about">Our Story</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#about">Story</a></li>
             <li><a href="#menu">Menu</a></li>
             <li><a href="#gallery-section">Gallery</a></li>
-            <li><a href="#location">Visit Us</a></li>
+            <li><a href="#location">Contact</a></li>
         </ul>
     </nav>
 
@@ -860,17 +990,17 @@
     <div class="hero" id="top">
         <div class="hero-bg-img"></div>
         <div class="hero-content">
-            <div class="hero-badge">Made Fresh Daily</div>
-            <h1>Handmade Pizzas<br><span class="green-text">Finest ingredients.</span><br><em>Always Delicious.</em></h1>
-            <p class="hero-sub">Your neighborhood spot located at the heart of San Jose's Downtown. Where a perfect slice meets a cold pint. We're also known for our strong, fresh espressos that'll get you going.</p>
+            <div class="hero-badge">San Jose's Culinary Gem</div>
+            <h1>Handcrafted Pizza<br>Expert Espresso<br><em>Unforgettable Flavor</em></h1>
+            <p class="hero-sub">Downtown San Jose's most celebrated destination for authentic, wood-fired pizzas and meticulously pulled espresso. Where culinary craft meets neighborhood warmth.</p>
             <div class="hero-ctas">
                 <a href="#menu" class="btn btn-primary">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-                    See the Menu
+                    Explore Our Menu
                 </a>
                 <a href="#location" class="btn btn-secondary">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                    Find Us
+                    Visit Today
                 </a>
             </div>
         </div>
@@ -879,91 +1009,132 @@
     <!-- MARQUEE -->
     <div class="marquee-wrap" aria-hidden="true">
         <div class="marquee-track">
-            <span>Fresh Pizza Daily</span>
-            <span>Crispy Wings</span>
-            <span>Melted Mozzarella</span>
-            <span>Pulled Espresso Shots</span>
-            <span>Cold Tapped Brews</span>
-            <span>Handmade Dough</span>
-            <span>Fresh Pizza Daily</span>
-            <span>Crispy Wings</span>
-            <span>Melted Mozzarella</span>
-            <span>Pulled Espresso Shots</span>
-            <span>Cold Tapped Brews</span>
-            <span>Handmade Dough</span>
+            <span>Authentic Italian Craft</span>
+            <span>Espresso Perfection</span>
+            <span>Premium Craft Beer</span>
+            <span>Fresh Made Daily</span>
+            <span>Neighborhood Soul</span>
+            <span>Authentic Italian Craft</span>
+            <span>Espresso Perfection</span>
+            <span>Premium Craft Beer</span>
+            <span>Fresh Made Daily</span>
+            <span>Neighborhood Soul</span>
         </div>
     </div>
+
+    <!-- WHY US SECTION -->
+    <section class="why-us-section" id="why-us">
+        <div class="section-header" style="margin-bottom: 4rem;">
+            <span class="section-label">The First Street Difference</span>
+            <h2 class="section-title">Why <em>We Stand Out</em></h2>
+        </div>
+        <div class="why-us-grid">
+            <div class="why-card reveal">
+                <div class="why-card-icon">🍕</div>
+                <h3>Handcrafted Dough</h3>
+                <p>Every pizza begins with our signature dough, made fresh daily from carefully sourced Italian flour. Zero shortcuts. Pure craft.</p>
+            </div>
+            <div class="why-card reveal" style="transition-delay: 0.1s;">
+                <div class="why-card-icon">☕</div>
+                <h3>Espresso Excellence</h3>
+                <p>Our baristas pull every shot with precision using ethically sourced, specialty-grade beans. Morning ritual perfected.</p>
+            </div>
+            <div class="why-card reveal" style="transition-delay: 0.2s;">
+                <div class="why-card-icon">🍺</div>
+                <h3>Curated Beer Selection</h3>
+                <p>From rare imports to local craft favorites, our beer menu celebrates quality, rarity, and the perfect pairing with pizza.</p>
+            </div>
+            <div class="why-card reveal" style="transition-delay: 0.3s;">
+                <div class="why-card-icon">🌿</div>
+                <h3>Premium Ingredients</h3>
+                <p>San Marzano tomatoes, real mozzarella di bufala, fresh basil from trusted growers. Quality in every bite.</p>
+            </div>
+            <div class="why-card reveal" style="transition-delay: 0.4s;">
+                <div class="why-card-icon">👥</div>
+                <h3>Community First</h3>
+                <p>We're not just a restaurant—we're your neighborhood gathering place. Known by name, valued for showing up authentically.</p>
+            </div>
+            <div class="why-card reveal" style="transition-delay: 0.5s;">
+                <div class="why-card-icon">⏰</div>
+                <h3>Open When You Need Us</h3>
+                <p>Afternoon espresso runs, Friday night pizzas, late-night gatherings. We're here for every moment that matters.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- ABOUT -->
-  <section class="about-section" id="about-sec">
-    <div id="about">
-        <div class="about-text reveal">
-            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                <span class="section-label">Our Story</span>
-                <h2 class="section-title">Your Downtown<br><em>Local Spot</em></h2>
-            </div>
-            <p>Nestled in the heart of downtown San Jose, we're a warm neighborhood joint where thin‑crust pizza and expert espresso drinks share the spotlight.</p>
-            <p>Every pizza starts with hand-stretched dough made fresh daily. Our standouts include the creamy First Street Chicken Alfredo and the fire-loaded Italian are what keep our regulars coming back.</p>
-            <p>Whether you're grabbing a quick slice at lunch, winding down with a cold pint or fueling up on espresso before work, this is your downtown San Jose's spot for all those needs and then some.</p>
-            <p>Join us for Happy Hour every Monday through Thursday from 4:00 PM to 6:00 PM and enjoy 50% off all pitchers of our domestic and imported draft beer pitchers on tap which is the perfect pairing for our signature handmade pizzas!</p>
-            <p>Stop by for dine-in, grab takeout, or order delivery online using DoorDash, UberEats and Grubhub platforms. For placing a phone order or if you have any questions, please give us a call 📞 (408) 352-5371</p>        
-            
-            <div class="stat-container" style="display: flex; gap: 1.5rem; margin-top: 1.5rem;">
-                <div class="stat">
-                    <div class="stat-num" data-count="100" data-suffix="%">100%</div>
-                    <div class="stat-label">Handmade Dough</div>
+    <section class="about-section" id="about-sec">
+        <div id="about">
+            <div class="about-text reveal">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">Built on <em>Passion</em></h2>
                 </div>
-                <div class="stat">
-                    <div class="stat-num" data-count="7">7</div>
-                    <div class="stat-label">Days a Week</div>
+                <p>First Street Pizza & Espresso exists because we believed Downtown San Jose deserved better. Better pizza, better espresso, better beer, and better community.</p>
+                <p>We're a neighborhood joint that refuses to compromise. Every pizza is hand-stretched moments before it hits the oven. Every espresso shot is pulled with intention. Every beer is chosen because we genuinely love it.</p>
+                <p>Our regulars know they'll get the same warm welcome whether it's their first visit or their hundredth. That consistency, that care, that's what sets us apart. We're not chasing trends—we're building something that lasts.</p>
+                <p>Whether you're fueling up for work with our signature cappuccino, grabbing a slice at lunch, unwinding with happy hour pints every Monday through Thursday (4-6pm with 50% off all draft beers), or joining us late-night when the game is on—you belong here.</p>
+
+                <div class="about-stats">
+                    <div class="stat reveal">
+                        <div class="stat-num" data-count="100" data-suffix="%">100%</div>
+                        <div class="stat-label">Fresh Daily</div>
+                    </div>
+                    <div class="stat reveal" style="transition-delay: 0.1s;">
+                        <div class="stat-num" data-count="7">7</div>
+                        <div class="stat-label">Days a Week</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image-col reveal" style="transition-delay: 0.15s;">
+                <div class="about-img-frame">
+                    <img src="images/IMG_002.webp" alt="Handcrafted pizza fresh from the oven">
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="about-image-col reveal" style="transition-delay:0.0s;">
-            <div class="about-img-frame">
-                <img src="images/IMG_002.webp" alt="Fresh pizza slices sizzling">
-            </div>
-            <div class="about-img-badge">
-                <span>"Always Fresh, Always Hot"</span>
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section">
+        <div class="experience-content reveal">
+            <h2 class="experience-heading">The Full <em>Experience</em></h2>
+            <p class="experience-sub">From the moment you walk through our doors, you're part of a community that values quality, authenticity, and the simple joy of great food shared with great people.</p>
+            <div class="experience-stats">
+                <div class="exp-stat">
+                    <div class="exp-stat-num">15+</div>
+                    <div class="exp-stat-label">Signature Pizzas</div>
+                </div>
+                <div class="exp-stat">
+                    <div class="exp-stat-num">10+</div>
+                    <div class="exp-stat-label">Espresso Drinks</div>
+                </div>
+                <div class="exp-stat">
+                    <div class="exp-stat-num">40+</div>
+                    <div class="exp-stat-label">Craft Beers on Tap</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ATMOSPHERE BAND -->
-<div class="atmosphere-band">
-    <div class="atmosphere-overlay"></div>
-    <div class="atmosphere-content reveal">
-        <span class="atmosphere-pill">The Vibe</span>
-        <h2 class="atmosphere-heading">
-            Where Downtown
-            <em>Comes to Eat</em>
-        </h2>
-        <p class="atmosphere-sub">From morning espresso to late-night pints — when the game is on, we fill up fast. Come early, stay late.</p>
-        <a href="#location" class="btn btn-secondary" style="backdrop-filter:blur(8px); border-color:var(--crust); color:var(--crust);">Find Us Downtown</a>
-    </div>
-</div>
+    </section>
 
     <!-- MENU -->
     <section class="menu-section" id="menu">
         <div class="section-header reveal">
             <span class="section-label">The Menu</span>
-            <h2 class="section-title">Something <em>Delicious</em><br>For Everyone</h2>
+            <h2 class="section-title">Carefully <em>Crafted</em></h2>
         </div>
 
         <div id="menu-inner">
-            <div class="menu-tabs reveal" style="transition-delay:0.1s;" role="tablist">
+            <div class="menu-tabs reveal" style="transition-delay: 0.1s;" role="tablist">
                 <button class="menu-tab active" data-filter="all">All Items</button>
                 <button class="menu-tab" data-filter="pizza">🍕 Hot Pizza</button>
                 <button class="menu-tab" data-filter="salads">🥗 Fresh Salads</button>
-                <button class="menu-tab" data-filter="pasta">🍝 Hearty Pasta</button>
                 <button class="menu-tab" data-filter="wings">🍗 Crispy Wings</button>
                 <button class="menu-tab" data-filter="drinks">🍺 Beer & Wine</button>
                 <button class="menu-tab" data-filter="coffee">☕ The Grind Bar</button>
             </div>
 
-            <!-- PIZZA -->
+            <!-- PIZZA CATEGORY -->
             <div class="menu-category reveal" data-category="pizza">
                 <div class="menu-grid">
                     <div class="menu-card">
@@ -984,7 +1155,7 @@
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">First Street Pizza 🍕</h3>
+                                <h3 class="item-name">First Street Special 🍕</h3>
                                 <span class="chef-pick">House Fave</span>
                             </div>
                             <p class="item-desc">Creamy Alfredo Sauce, Mozzarella, Roasted Chicken, Mushrooms, Jalapeños, Parmesan & Basil.</p>
@@ -999,7 +1170,7 @@
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Classic Margherita Pizza 🍕</h3>
+                                <h3 class="item-name">Classic Margherita 🍕</h3>
                             </div>
                             <p class="item-desc">Fresh Basil, Bubbling Mozzarella, Roma Tomatoes & Extra Virgin Olive Oil.</p>
                         </div>
@@ -1014,9 +1185,9 @@
                         <div>
                             <div class="menu-card-header">
                                  <h3 class="item-name">Garden Veggies Pizza</h3>
-                                <span class="chef-pick" style="background:var(--basil); color:white;">Vegetarian</span>
+                                <span class="chef-pick" style="background:var(--leaf);">Vegetarian</span>
                             </div>
-                            <p class="item-desc">Spinach, Mozzarella, Tomatoes, Mushrooms, Bell Peppers, Onions & Garlic</p>
+                            <p class="item-desc">Spinach, Mozzarella, Tomatoes, Mushrooms, Bell Peppers, Onions & Garlic.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
@@ -1028,9 +1199,9 @@
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                 <h3 class="item-name">Premium Pepperoni & Cheese Pizza</h3>
+                                 <h3 class="item-name">Premium Pepperoni & Cheese</h3>
                             </div>
-                            <p class="item-desc">A classic Pepperoni & Cheese made with the finest ingredients</p>
+                            <p class="item-desc">The timeless classic made with the finest imported pepperoni and fresh mozzarella.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
@@ -1044,7 +1215,7 @@
                             <div class="menu-card-header">
                                  <h3 class="item-name">Hawaiian Pizza 🍕</h3>
                             </div>
-                            <p class="item-desc">Pizza Sauce, Mozzarella, Pineapple & Ham</p>
+                            <p class="item-desc">Pizza Sauce, Mozzarella, Pineapple & Ham.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
@@ -1057,9 +1228,9 @@
                         <div>
                             <div class="menu-card-header">
                                  <h3 class="item-name">Super Meat Pizza</h3>
-                                <span class="chef-pick" style="background:var(--wood); color:white;">Meaty</span>
+                                <span class="chef-pick" style="background:var(--sage);">Meaty</span>
                             </div>
-                            <p class="item-desc">Pizza sauce, Mozzarella, Pepperoni, Ham & Chicken</p>
+                            <p class="item-desc">Pizza sauce, Mozzarella, Pepperoni, Ham & Chicken.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Small</span><strong>$19.95</strong></div>
@@ -1072,7 +1243,7 @@
                         <div>
                             <div class="menu-card-header">
                                 <h3 class="item-name">BBQ Chicken Pizza</h3>
-                                <span class="chef-pick" style="background:var(--tomato); color:white;">Delicious</span>
+                                <span class="chef-pick" style="background:var(--leaf);">Delicious</span>
                             </div>
                             <p class="item-desc">Tangy BBQ Sauce, Mozzarella, Chicken, Pickled Onions, Habanero & Garlic.</p>
                         </div>
@@ -1087,9 +1258,9 @@
                         <div>
                             <div class="menu-card-header">
                                  <h3 class="item-name">Premium Cheese Pizza</h3>
-                                <span class="chef-pick" style="background:var(--cheese); color:var(--wood);">Cheesy</span>
+                                <span class="chef-pick" style="background:var(--moss);">Classic</span>
                             </div>
-                            <p class="item-desc">The Classic Cheese Pizza</p>
+                            <p class="item-desc">Simple, satisfying, unforgettable. The foundation of great pizza.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Small</span><strong>$15.95</strong></div>
@@ -1102,10 +1273,9 @@
                      <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Classic Margherita Pizza - Slice</h3>
-                                <span class="chef-pick" style="background:var(--tomato); color:white;">🍕</span>
+                                <h3 class="item-name">Margherita Slice 🍕</h3>
                             </div>
-                            <p class="item-desc">Grab slice of our delicous Margherita Pizza</p>
+                            <p class="item-desc">Fresh basil, mozzarella, tomato—pizza done right.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
@@ -1114,10 +1284,9 @@
                      <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Premium Pepperoni Pizza - Slice</h3>
-                                <span class="chef-pick" style="background:var(--tomato); color:white;">🍕</span>
+                                <h3 class="item-name">Pepperoni Slice 🍕</h3>
                             </div>
-                            <p class="item-desc">Grab slice of our classic pepperoni pizza</p>
+                            <p class="item-desc">Classic combo that never goes out of style.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
@@ -1127,10 +1296,9 @@
                      <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Premium Cheese Pizza Slice</h3>
-                                <span class="chef-pick" style="background:var(--tomato); color:white;">🍕</span>
+                                <h3 class="item-name">Cheese Pizza Slice</h3>
                             </div>
-                            <p class="item-desc">Grab slice of our classic cheese pizza</p>
+                            <p class="item-desc">Pure comfort in a single slice.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
@@ -1172,82 +1340,80 @@
                     </div>
                 </div>
 
-                <div class="menu-category reveal" data-category="pasta">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Penne Pomodoro Sausage 🍝</h3>
-                            </div>
-                            <p class="item-desc">Penne Pasta, House Tomato Sauce, Basil, Mozzarella, Italian Sausage & Onions.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Hearty Plate</span><strong>$17.00</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-category reveal" data-category="pasta">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">First Street Chicken Cavatappi 🍝</h3>
-                            </div>
-                            <p class="item-desc">Creamy alfredo sauce, Mozzarella, Chicken, Mushrooms, Parmesan & Basil</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Hearty Plate</span><strong>$18.99</strong></div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="menu-category reveal" data-category="wings">
                     <div class="menu-card h-100">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Crispy Chicken Wings (Buffalo or BBQ Style) 🍗</h3>
+                                <h3 class="item-name">BBQ Chicken Wings 🍗</h3>
                             </div>
-                            <p class="item-desc">Crispy, golden and made to share. It's the perfect sidekick to any hot pizza.</p>
+                            <p class="item-desc">Perfectly crispy, golden, and shared with friends. Your pizza's perfect companion.</p>
                         </div>
                         <div class="price-row">
-                            <div class="price-bubble"><span>6 pcs</span><strong>$6.99</strong></div>
-                            <div class="price-bubble"><span>12 pcs</span><strong>$12.99</strong></div>
-                            <div class="price-bubble"><span>24 pcs</span><strong>$24.99</strong></div>
+                            <div class="price-bubble"><span>6 pcs</span><strong>$8.99</strong></div>
+                            <div class="price-bubble"><span>12 pcs</span><strong>$15.99</strong></div>
+                            <div class="price-bubble"><span>24 pcs</span><strong>$25.99</strong></div>
                         </div>
+                        <div class="menu-card h-100">
+                        <div>
+                            <div class="menu-card-header">
+                                <h3 class="item-name">Buffalo Wings 🍗</h3>
+                            </div>
+                            <p class="item-desc">Perfectly cooked, crispy on the outside and juicy and succulent on the inside.</p>
+                        </div>
+                        <div class="price-row">
+                            <div class="price-bubble"><span>6 pcs</span><strong>$8.99</strong></div>
+                            <div class="price-bubble"><span>12 pcs</span><strong>$15.99</strong></div>
+                            <div class="price-bubble"><span>24 pcs</span><strong>$25.99</strong></div>
+                        </div>
+                        <div class="menu-card h-100">
+                             <div>
+                            <div class="menu-card-header">
+                                <h3 class="item-name">Ethiopian (Spicy Berbere Sauce) Wings 🍗</h3>
+                            </div>
+                            <p class="item-desc">Crispy chicken wings coated in a bold, spicy, and slightly sweet East African-inspired spice blend and honey glaze.</p>
+                        </div>
+                        <div class="price-row">
+                            <div class="price-bubble"><span>6 pcs</span><strong>$8.99</strong></div>
+                            <div class="price-bubble"><span>12 pcs</span><strong>$15.99</strong></div>
+                            <div class="price-bubble"><span>24 pcs</span><strong>$25.99</strong></div>
+                        </div>
+                        <div class="menu-card h-100">
+                            
                     </div>
                 </div>
             </div>
 
             <!-- BEER & WINE -->
             <div class="menu-category reveal" data-category="drinks">
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Cold Beer</div>
+                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Cold Beer & Libations</div>
                 <div class="menu-grid">
                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Imported Draft >🍺</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Imported Draft 🍺</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Pint</span><strong>$8.00</strong></div></div>
                     </div>
                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Domestic Draft >🍺</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Domestic Draft 🍺</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Pint</span><strong>$7.00</strong></div></div>
                     </div>
                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Imported Bottle >🍺</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Imported Bottle 🍺</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Bottle</span><strong>$8.00</strong></div></div>
                     </div>
                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Domestic Bottle >🍺</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Domestic Bottle 🍺</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Bottle</span><strong>$7.00</strong></div></div>
                     </div>
                      <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Michelada >🍹</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Michelada 🍹</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Pint</span><strong>$8.99</strong></div></div>
                     </div>
                      <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">BuzzBalls>🍸</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">BuzzBalls 🍸</h3></div></div>
                         <div class="price-row"><div class="price-bubble"><span>Ready-to-drink Cocktail</span><strong>$7.99</strong></div></div>
                     </div>
                 </div>
 
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Wine</div>
+                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Wine Selection</div>
                 <div class="menu-grid">
                     <div class="menu-card h-100">
                         <div><div class="menu-card-header"><h3 class="item-name">Red Wine 🍷</h3></div></div>
@@ -1268,7 +1434,7 @@
 
             <!-- THE GRIND BAR (COFFEE) -->
             <div class="menu-category reveal" data-category="coffee">
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Hot Drinks</div>
+                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Hot Drinks</div>
                 <div class="menu-grid">
                     <div class="menu-card h-100">
                         <div><div class="menu-card-header"><h3 class="item-name">Coffee ☕</h3></div></div>
@@ -1311,7 +1477,7 @@
                         </div>
                     </div>
                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Caramel Macchiato☕</h3></div></div>
+                        <div><div class="menu-card-header"><h3 class="item-name">Caramel Macchiato ☕</h3></div></div>
                         <div class="price-row">
                             <div class="price-bubble"><span>SM</span><strong>$5.15</strong></div>
                             <div class="price-bubble"><span>MD</span><strong>$5.65</strong></div>
@@ -1344,7 +1510,7 @@
                     </div>
                 </div>
 
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Iced Drinks</div>
+                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Iced Drinks</div>
                 <div class="menu-grid">
                     <div class="menu-card h-100">
                         <div><div class="menu-card-header"><h3 class="item-name">Iced Americano</h3></div></div>
@@ -1388,12 +1554,12 @@
                     </div>
                 </div>
 
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Espresso & More</div>
+                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Espresso & Beverages</div>
                 <div class="menu-grid">
                     <div class="menu-card h-100">
                         <div>
                             <div class="menu-card-header"><h3 class="item-name">Espresso Shots</h3></div>
-                            <p class="item-desc">Freshly pulled, rich and dark.</p>
+                            <p class="item-desc">Precisely pulled from beans we obsess over. Pure espresso ritual.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Single</span><strong>$3.15</strong></div>
@@ -1403,8 +1569,8 @@
                     </div>
                     <div class="menu-card h-100">
                         <div>
-                            <div class="menu-card-header"><h3 class="item-name">Add-ons</h3></div>
-                            <p class="item-desc">Customize your perfect cup.</p>
+                            <div class="menu-card-header"><h3 class="item-name">Flavor Add-ons</h3></div>
+                            <p class="item-desc">Make your drink uniquely yours.</p>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Extra Flavor</span><strong>$0.75</strong></div>
@@ -1413,7 +1579,7 @@
                     </div>
                     <div class="menu-card h-100">
                         <div>
-                            <div class="menu-card-header"><h3 class="item-name">Cold Beverages</h3></div>
+                            <div class="menu-card-header"><h3 class="item-name">Beverages</h3></div>
                         </div>
                         <div class="price-row">
                             <div class="price-bubble"><span>Soft Drink</span><strong>$2.99</strong></div>
@@ -1431,60 +1597,58 @@
     <section id="gallery-section">
         <div class="section-header reveal">
             <span class="section-label">Gallery</span>
-            <h2 class="section-title">A Slice of <em>Downtown Life</em></h2>
+            <h2 class="section-title">Life at <em>First Street</em></h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item reveal"><img src="images/fp5.webp" alt="Premium Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Fresh From the Oven</div><div class="gallery-caption-sub">Handmade Daily</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_4096.webp" alt="BBQ Chicken Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Cold Tapped Brews</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3207.webp" alt="Storefront"><div class="gallery-caption"><div class="gallery-caption-text">The Storefront</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3212.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Beer & Wine Bar</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2621.webp" alt="Half & Half Pepperoni & Cheese"><div class="gallery-caption"><div class="gallery-caption-text">Half & Half Pepperoni & Cheese</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2627.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Combo Pizza</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2533.webp" alt="BBQ Chicken"><div class="gallery-caption"><div class="gallery-caption-text">BBQ Chicken</div></div></div>
-            <div class="gallery-item reveal"><img src="images/Pizza_001.webp" alt="Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Pizza</div></div></div>
-            <div class="gallery-item reveal"><img src="images/fp3.webp" alt="Margherita Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Hawaiian Pizza</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3193.webp" alt="Hawaiian Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Hawaiian Pizza</div></div></div>
-            <div class="gallery-item reveal"><img src="images/schooldiscount.webp" alt="Pizza"><div class="gallery-caption"><div class="gallery-caption-text">School ID Discount</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_4030.png" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Espresso Bar</div></div></div>
-            
-
+            <div class="gallery-item reveal"><img src="images/fp5.webp" alt="Premium Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Fresh From Fire</div><div class="gallery-caption-sub">The Art of Pizza</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_4096.webp" alt="BBQ Chicken Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Ice Cold Refreshment</div><div class="gallery-caption-sub">Craft Beer Culture</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_3207.webp" alt="Storefront"><div class="gallery-caption"><div class="gallery-caption-text">Our Doors Welcome You</div><div class="gallery-caption-sub">Downtown Destination</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_3212.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Behind the Bar</div><div class="gallery-caption-sub">Curated Selection</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_2621.webp" alt="Half & Half Pepperoni & Cheese"><div class="gallery-caption"><div class="gallery-caption-text">Half & Half Heaven</div><div class="gallery-caption-sub">Best of Both Worlds</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_2627.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Loaded Combo</div><div class="gallery-caption-sub">Maximum Flavor</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_2533.webp" alt="BBQ Chicken"><div class="gallery-caption"><div class="gallery-caption-text">BBQ Perfection</div><div class="gallery-caption-sub">Sweet & Smoky</div></div></div>
+            <div class="gallery-item reveal"><img src="images/Pizza_001.webp" alt="Pizza"><div class="gallery-caption"><div class="gallery-caption-text">In The Zone</div><div class="gallery-caption-sub">Signature Creation</div></div></div>
+            <div class="gallery-item reveal"><img src="images/fp3.webp" alt="Margherita Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Tropical Twist</div><div class="gallery-caption-sub">Island Vibes</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_3193.webp" alt="Hawaiian Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Summer Ready</div><div class="gallery-caption-sub">Pineapple & Ham</div></div></div>
+            <div class="gallery-item reveal"><img src="images/schooldiscount.webp" alt="Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Student Approved</div><div class="gallery-caption-sub">Special Rates</div></div></div>
+            <div class="gallery-item reveal"><img src="images/IMG_4030.png" alt=""><div class="gallery-caption"><div class="gallery-caption-text">The Grind Bar</div><div class="gallery-caption-sub">Espresso Excellence</div></div></div>
         </div>
     </section>
 
     <!-- LOCATION & HOURS -->
     <section class="location-section" id="location">
         <div class="section-header reveal">
-            <span class="section-label">Find Us</span>
-            <h2 class="section-title">Stop By <em>Anytime</em></h2>
+            <span class="section-label">Visit Us</span>
+            <h2 class="section-title">Find Us <em>Downtown</em></h2>
         </div>
         <div class="location-grid">
             <div class="info-card reveal">
-                <h3>Visit Us</h3>
+                <h3>Where We Are</h3>
                 <address>
-                    <strong>Address</strong>
+                    <strong>📍 Address</strong>
                     <p>33 S. 1st St<br>San Jose, CA 95113</p>
-                    <strong>Phone</strong>
+                    <strong>📞 Call Us</strong>
                     <p><a href="tel:+14083525371">(408) 352-5371</a></p>
-                    <strong>Social</strong>
-                    <p><a href="https://www.instagram.com/firststreetpizza/" target="_blank">@firstStreetPizza</a></p>
-                    <strong>The Vibe</strong>
-                    <p>Your neighborhood spot for morning espresso, hot lunch slices, and late-night pints. Laid-back, welcoming, always good.</p>
+                    <strong>🌐 Connect</strong>
+                    <p><a href="https://www.instagram.com/firststreetpizza/" target="_blank">@firstStreetPizza on Instagram</a></p>
+                    <strong>✨ The Vibe</strong>
+                    <p>Your neighborhood gathering spot for morning espresso shots, lunch slice runs, Happy Hour happy moments (Mon-Thu 4-6pm with 50% off draft beer), and late-night pints when the game is on. Casual, welcoming, always genuine.</p>
                 </address>
             </div>
-            <div class="info-card reveal" style="transition-delay:0.1s">
-                <h3>Hours</h3>
+            <div class="info-card reveal" style="transition-delay: 0.1s;">
+                <h3>Open & Ready</h3>
                 <ul class="hours-list" id="hoursList">
                     <li data-day="1"><span class="day">Monday</span><span class="time">3:00 PM – 10:00 PM</span></li>
                     <li data-day="2"><span class="day">Tuesday</span><span class="time">3:00 PM – 10:00 PM</span></li>
                     <li data-day="3"><span class="day">Wednesday</span><span class="time">3:00 PM – 10:00 PM</span></li>
                     <li data-day="4"><span class="day">Thursday</span><span class="time">3:00 PM – 10:00 PM</span></li>
-                    <li data-day="5"><span class="day">Friday</span><span class="time">3:00 PM – 12:00 PM</span></li>
-                    <li data-day="6"><span class="day">Saturday</span><span class="time">3:00 PM – 12:00 PM</span></li>
+                    <li data-day="5"><span class="day">Friday</span><span class="time">3:00 PM – 12:00 AM</span></li>
+                    <li data-day="6"><span class="day">Saturday</span><span class="time">3:00 PM – 12:00 AM</span></li>
                     <li data-day="0"><span class="day">Sunday</span><span class="time">3:00 PM – 10:00 PM</span></li>
                 </ul>
             </div>
             <div class="map-frame reveal">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.0!2d-121.8881!3d37.3352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb8d7cba!2s33+S+1st+St%2C+San+Jose%2C+CA+95113!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.0!2d-121.8881!3d37.3352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb8d7cba!2s33+S+1st+St%2C+San+Jose%2C+CA+95113!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="First Street Pizza & Espresso Location"></iframe>
             </div>
         </div>
     </section>
@@ -1492,15 +1656,22 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-brand">First Street Pizza & Espresso</div>
-        <div class="footer-tagline">Espressos, Pizza & Brews</div>
-        <a href="https://www.instagram.com/firststreetpizza" target="_blank" aria-label="Instagram" class="social-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-        </a>
-        <p class="footer-copy">© 2026 First Street Pizza & Espresso. All rights reserved.</p>
+        <div class="footer-tagline">Craft Pizza | Quality Espresso | Community</div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/firststreetpizza" target="_blank" aria-label="Instagram" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="tel:+14083525371" aria-label="Call us" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+        </div>
+        <p class="footer-copy">© 2026 First Street Pizza & Espresso. Handcrafted with passion in Downtown San Jose.</p>
     </footer>
 
     <script>
@@ -1525,11 +1696,12 @@
             });
         });
 
-        // Scroll reveals
+        // Scroll reveals with staggered timing
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
+            entries.forEach((e, index) => {
                 if (e.isIntersecting) {
+                    e.target.style.animationDelay = (index * 0.05) + 's';
                     e.target.classList.add('visible');
                     revealObserver.unobserve(e.target);
                 }
@@ -1542,7 +1714,7 @@
         const todayRow = document.querySelector(`#hoursList li[data-day="${today}"]`);
         if (todayRow) todayRow.classList.add('today');
 
-        // Menu category filtering
+        // Menu category filtering with smooth transitions
         const menuTabs = document.querySelectorAll('.menu-tab');
         const menuCategories = document.querySelectorAll('.menu-category');
         menuTabs.forEach(tab => {
@@ -1553,10 +1725,9 @@
                 menuCategories.forEach(cat => {
                     if (filter === 'all' || cat.dataset.category === filter) {
                         cat.style.display = 'block';
-                        // Small animation trigger
                         cat.style.animation = 'none';
-                        cat.offsetHeight; /* trigger reflow */
-                        cat.style.animation = 'fadeUp 0.5s ease forwards';
+                        cat.offsetHeight;
+                        cat.style.animation = 'fadeUp 0.6s ease forwards';
                     } else {
                         cat.style.display = 'none';
                     }
@@ -1590,6 +1761,15 @@
             });
         }, { threshold: 0.5 });
         statNums.forEach(el => statObserver.observe(el));
+
+        // Subtle parallax on scroll for enhanced depth
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-bg-img');
+            parallaxElements.forEach(el => {
+                el.style.transform = `translateY(${scrolled * 0.5}px)`;
+            });
+        }, { passive: true });
     </script>
 </body>
 </html>
