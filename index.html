@@ -73,6 +73,9 @@
             display: none;
             cursor: pointer;
             color: var(--leaf);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
         }
         
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
@@ -112,21 +115,6 @@
             overflow: hidden;
             background: linear-gradient(135deg, var(--sage) 0%, var(--charcoal) 100%);
         }
-        .hero-bg-img {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(45, 90, 61, 0.85) 0%, rgba(45, 90, 61, 0.5) 50%, rgba(45, 90, 61, 0.1) 100%),
-                url('images/IMG_3433.webp');
-            background-size: cover;
-            background-position: center;
-            animation: heroZoom 25s infinite alternate linear;
-            z-index: 0;
-        }
-        @keyframes heroZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.08); }
-        }
         .hero-content {
             position: relative;
             z-index: 1;
@@ -147,12 +135,6 @@
             border-radius: 50px;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(10px);
-            opacity: 0;
-            animation: slideInRight 0.8s 0.2s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes slideInRight {
-            0% { opacity: 0; transform: translateX(-20px); }
-            100% { opacity: 1; transform: translateX(0); }
         }
         .hero h1 {
             font-family: 'Playfair Display', serif;
@@ -162,8 +144,6 @@
             letter-spacing: -0.02em;
             color: var(--cream);
             margin-bottom: 1.8rem;
-            opacity: 0;
-            animation: fadeUp 0.9s 0.4s forwards;
             text-shadow: 3px 6px 20px rgba(0, 0, 0, 0.5);
         }
         .hero h1 em {
@@ -178,15 +158,11 @@
             line-height: 1.7;
             color: rgba(255, 253, 247, 0.92);
             margin-bottom: 2.8rem;
-            opacity: 0;
-            animation: fadeUp 0.9s 0.6s forwards;
         }
         .hero-ctas {
             display: flex;
             gap: 1.4rem;
             flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUp 0.9s 0.85s forwards;
         }
         .btn {
             display: inline-flex;
@@ -214,52 +190,8 @@
             transform: translateY(-6px) scale(1.02);
             box-shadow: 0 15px 45px rgba(74, 134, 89, 0.6);
         }
-        .btn-secondary {
-            background: rgba(255, 253, 247, 0.12);
-            color: var(--cream);
-            border: 2px solid var(--mint);
-            backdrop-filter: blur(8px);
-        }
-        .btn-secondary:hover {
-            background: var(--cream);
-            color: var(--sage);
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        .btn svg { width: 18px; height: 18px; }
 
-        /* ── MARQUEE ── */
-        .marquee-wrap {
-            background: var(--moss);
-            padding: 1.2rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 4px solid var(--charcoal);
-            border-bottom: 4px solid var(--charcoal);
-        }
-        .marquee-track {
-            display: inline-block;
-            animation: marquee 28s linear infinite;
-        }
-        .marquee-track span {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 900;
-            font-style: italic;
-            color: var(--cream);
-            padding: 0 2.5rem;
-        }
-        .marquee-track span::after {
-            content: '🍕';
-            margin-left: 3rem;
-            font-style: normal;
-        }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* ── SECTIONS ── */
+        /* ── SECTIONS & MENU ── */
         section { padding: 7.5rem 3rem; }
         .section-header { text-align: center; margin-bottom: 4.5rem; }
         .section-label {
@@ -271,8 +203,6 @@
             color: var(--leaf);
             margin-bottom: 1.2rem;
             display: block;
-            opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
         }
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -280,170 +210,12 @@
             font-weight: 900;
             line-height: 1.1;
             color: var(--sage);
-            opacity: 0;
-            animation: fadeUp 0.6s 0.15s ease forwards;
         }
         .section-title em { color: var(--moss); font-style: italic; }
 
-        /* ── WHY US SECTION ── */
-        .why-us-section {
-            background: linear-gradient(135deg, var(--mint) 0%, rgba(212, 232, 216, 0.5) 100%);
-            position: relative;
-        }
-        .why-us-section::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -20%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(74, 134, 89, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            animation: floatSlow 20s ease-in-out infinite;
-        }
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
-        }
-        .why-us-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .why-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(45, 90, 61, 0.08);
-            border-left: 5px solid var(--leaf);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: left;
-        }
-        .why-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 50px rgba(45, 90, 61, 0.15);
-            border-left-color: var(--moss);
-        }
-        .why-card-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-            display: inline-block;
-        }
-        .why-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--sage);
-            margin-bottom: 1rem;
-            font-weight: 900;
-        }
-        .why-card p {
-            font-size: 1.05rem;
-            color: var(--charcoal);
-            line-height: 1.8;
-        }
-
-        /* ── ABOUT ── */
-        .about-section {
-            background: var(--cream);
-            position: relative;
-        }
-        .about-section::before {
-            content: '';
-            position: absolute;
-            bottom: 0; right: -10%;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(74, 134, 89, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        #about {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.85;
-            color: var(--charcoal);
-            margin-bottom: 1.8rem;
-        }
-        .about-text p:first-of-type {
-            font-size: 1.2rem;
-            color: var(--sage);
-            font-weight: 500;
-        }
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3.5rem;
-        }
-        .stat {
-            background: linear-gradient(135deg, rgba(74, 134, 89, 0.08) 0%, rgba(107, 168, 111, 0.04) 100%);
-            padding: 2rem;
-            border-radius: 14px;
-            border: 2px solid rgba(74, 134, 89, 0.2);
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .stat:hover {
-            transform: translateY(-8px);
-            border-color: var(--leaf);
-            box-shadow: 0 15px 40px rgba(74, 134, 89, 0.12);
-        }
-        .stat-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
-            font-weight: 900;
-            color: var(--leaf);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        .stat-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--sage);
-        }
-        .about-img-frame {
-            position: relative;
-            aspect-ratio: 4/5;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: -25px 25px 0 var(--mint), 0 25px 60px rgba(45, 90, 61, 0.2);
-        }
-        .about-img-frame img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease, filter 0.5s ease;
-            filter: saturate(1.15) contrast(1.08);
-        }
-        .about-img-frame:hover img {
-            transform: scale(1.08);
-            filter: saturate(1.3) contrast(1.12);
-        }
-
-        /* ── MENU SECTION ── */
         .menu-section {
             background: linear-gradient(180deg, #f9faf7 0%, var(--mint) 100%);
             position: relative;
-        }
-        .menu-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -15%;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(107, 168, 111, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            animation: floatSlow 25s ease-in-out infinite;
         }
         #menu-inner { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
 
@@ -468,16 +240,12 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 6px 20px rgba(45, 90, 61, 0.08);
         }
-        .menu-tab:hover {
+        .menu-tab:hover, .menu-tab.active {
             transform: translateY(-4px);
             box-shadow: 0 10px 30px rgba(45, 90, 61, 0.15);
-            color: var(--leaf);
-            border-color: var(--leaf);
-        }
-        .menu-tab.active {
-            background: var(--leaf);
             color: white;
-            box-shadow: 0 12px 40px rgba(74, 134, 89, 0.3);
+            background: var(--leaf);
+            border-color: var(--leaf);
         }
 
         .menu-category { margin-bottom: 5rem; }
@@ -530,7 +298,6 @@
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
             font-weight: 600;
-            margin-top: 0.5rem;
         }
         .item-desc {
             font-size: 1.08rem;
@@ -538,14 +305,6 @@
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
-        .item-note {
-            font-size: 0.9rem;
-            color: var(--moss);
-            font-style: italic;
-            margin-top: -1rem;
-            margin-bottom: 1.5rem;
-        }
-
         .price-row {
             display: flex;
             gap: 0.8rem;
@@ -559,11 +318,6 @@
             padding: 1rem 0.7rem;
             border-radius: 10px;
             border: 1px solid rgba(74, 134, 89, 0.15);
-            transition: all 0.3s;
-        }
-        .menu-card:hover .price-bubble {
-            background: rgba(74, 134, 89, 0.12);
-            border-color: var(--leaf);
         }
         .price-bubble span {
             display: block;
@@ -582,351 +336,12 @@
             font-weight: 900;
         }
 
-        /* ── EXPERIENCE SECTION ── */
-        .experience-section {
-            background: var(--sage);
-            position: relative;
-            overflow: hidden;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .experience-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 232, 216, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(107, 168, 111, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .experience-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 3rem;
-            max-width: 900px;
-        }
-        .experience-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.2rem, 6vw, 5rem);
-            font-weight: 900;
-            color: var(--cream);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .experience-sub {
-            font-family: 'Lora', serif;
-            font-size: 1.25rem;
-            color: rgba(255, 253, 247, 0.9);
-            line-height: 1.8;
-            max-width: 55ch;
-            margin: 0 auto 2.5rem;
-        }
-        .experience-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 2px solid rgba(212, 232, 216, 0.3);
-        }
-        .exp-stat {
-            color: var(--mint);
-            text-align: center;
-        }
-        .exp-stat-num {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--mint);
-        }
-        .exp-stat-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: rgba(255, 253, 247, 0.8);
-            margin-top: 0.5rem;
-        }
-
-        /* ── GALLERY ── */
-        #gallery-section {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%);
-            padding: 7.5rem 3rem;
-        }
-        #gallery-section .section-label { color: var(--leaf); }
-        #gallery-section .section-title { color: var(--sage); }
-        .gallery-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 280px;
-            gap: 1.2rem;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            cursor: pointer;
-        }
-        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .gallery-item:nth-child(4) { grid-column: span 2; }
-
-        .gallery-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.7s;
-            filter: brightness(0.88) saturate(1.25);
-        }
-        .gallery-item:hover img {
-            transform: scale(1.12) rotate(2deg);
-            filter: brightness(1.1) saturate(1.4);
-        }
-        .gallery-caption {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(45, 90, 61, 0.95) 0%, transparent 60%);
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .gallery-item:hover .gallery-caption {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .gallery-caption-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-style: italic;
-            font-weight: 900;
-            color: var(--mint);
-        }
-        .gallery-caption-sub {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-top: 0.5rem;
-        }
-
-        /* ── LOCATION / HOURS ── */
-        .location-section {
-            background: var(--cream);
-            position: relative;
-        }
-        .location-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(74, 134, 89, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        #location { max-width: 1300px; margin: 0 auto; position: relative; z-index: 1; }
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3.5rem;
-        }
-        .info-card {
-            background: white;
-            padding: 3.5rem;
-            border-radius: 18px;
-            box-shadow: 0 15px 50px rgba(45, 90, 61, 0.08);
-            border-top: 6px solid var(--leaf);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 70px rgba(45, 90, 61, 0.15);
-        }
-        .info-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-style: italic;
-            color: var(--sage);
-            margin-bottom: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            font-weight: 900;
-        }
-        .info-card h3::before {
-            content: '';
-            display: block;
-            width: 45px; height: 3px;
-            background: var(--moss);
-        }
-        .info-card address p {
-            font-size: 1.15rem;
-            line-height: 1.75;
-            color: var(--charcoal);
-            margin-bottom: 2rem;
-        }
-        .info-card strong {
-            color: var(--sage);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            letter-spacing: 0.08em;
-            display: block;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .info-card a {
-            color: var(--leaf);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .info-card a:hover {
-            color: var(--sage);
-            text-decoration: underline;
-        }
-
-        .hours-list { list-style: none; }
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.2rem 0;
-            font-size: 1.08rem;
-            border-bottom: 1px dashed rgba(45, 90, 61, 0.15);
-            color: var(--charcoal);
-        }
-        .hours-list li:last-child { border-bottom: none; }
-        .hours-list .day { font-weight: 700; color: var(--sage); }
-        .hours-list li.today {
-            background: rgba(107, 168, 111, 0.12);
-            margin: 0.5rem -1.5rem;
-            padding: 1.2rem 1.5rem;
-            border-radius: 10px;
-            border: 2px solid var(--moss);
-        }
-        .hours-list li.today .day,
-        .hours-list li.today .time {
-            color: var(--leaf);
-            font-weight: 900;
-        }
-
-        .map-frame {
-            grid-column: 1 / -1;
-            height: 420px;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(45, 90, 61, 0.12);
-            border: 4px solid white;
-        }
-        .map-frame iframe { width: 100%; height: 100%; border: none; }
-
-        /* ── FOOTER ── */
-        footer {
-            background: linear-gradient(135deg, var(--sage) 0%, var(--charcoal) 100%);
-            padding: 5rem 3rem 2.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, var(--leaf), var(--moss), var(--mint));
-        }
-        .footer-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--cream);
-            margin-bottom: 0.8rem;
-        }
-        .footer-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--mint);
-            margin-bottom: 2.5rem;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px; height: 48px;
-            background: rgba(255, 255, 255, 0.12);
-            color: var(--cream);
-            border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        .social-link:hover {
-            background: var(--leaf);
-            transform: translateY(-6px) scale(1.15);
-            box-shadow: 0 12px 30px rgba(74, 134, 89, 0.4);
-            border-color: var(--leaf);
-        }
-        .footer-copy {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.45);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        /* ── ANIMATIONS ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(35px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(-25px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .reveal.visible { opacity: 1; transform: none; }
-
-        /* ── SCROLL PARALLAX ── */
-        .parallax-item {
-            transition: transform 0.1s ease-out;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 992px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 250px;
-            }
-            .gallery-item:nth-child(1), .gallery-item:nth-child(4) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-        }
+        /* ── RESPONSIVE FIX ── */
         @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+            nav { padding: 1rem 1.5rem; }
             .hamburger { display: block; }
             .nav-links {
+                display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -934,38 +349,10 @@
                 background: rgba(255, 253, 247, 0.98);
                 flex-direction: column;
                 gap: 1.5rem;
-                padding: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                align-items: center;
-                border-bottom: 0px solid var(--leaf);
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
-            .nav-links.open {
-                max-height: 280px;
-                padding: 1.8rem 0;
-                border-bottom-width: 3px;
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-            }
-            .hero { padding: 0 1.5rem; text-align: center; align-items: center; }
-            .hero-content { margin-top: 1.5rem; }
-            .hero-ctas { justify-content: center; }
-            section { padding: 5rem 1.5rem; }
-            #about { grid-template-columns: 1fr; gap: 3.5rem; }
-            .about-image-col { order: -1; }
-            .location-grid { grid-template-columns: 1fr; }
-            .map-frame { height: 350px; }
-            .why-us-grid { grid-template-columns: 1fr; }
-            .experience-stats { grid-template-columns: 1fr 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero-sub { font-size: 1.1rem; }
-            .section-title { font-size: 2rem; }
-            .menu-grid { grid-template-columns: 1fr; }
-            .btn { padding: 0.9rem 1.8rem; font-size: 0.9rem; }
-            .about-stats { grid-template-columns: 1fr; }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
@@ -974,655 +361,125 @@
     <!-- NAVIGATION -->
     <nav id="navbar">
         <a href="#" class="nav-brand">First Street Pizza & Espresso</a>
-        <div class="hamburger" id="hamburger">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#about">Story</a></li>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#menu">Menu</a></li>
-            <li><a href="#gallery-section">Gallery</a></li>
-            <li><a href="#location">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#location">Location</a></li>
         </ul>
     </nav>
 
-    <!-- HERO -->
-    <div class="hero" id="top">
-        <div class="hero-bg-img"></div>
+    <!-- HERO SECTION -->
+    <header class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Downtown San Jose's Culinary Pizza Gem</div>
-            <h1>Handcrafted Pizza<br>Expert Espresso<br><em>Unforgettable Flavor</em></h1>
-            <p class="hero-sub">Downtown San Jose's new most celebrated destination for authentic, handcrafed pizzas and meticulously pulled, rich espressos. First Street Pizza & Espresso is where culinary craft meets neighborhood warmth.</p>
+            <span class="hero-badge">Downtown San Jose</span>
+            <h1>Flavor Meets <em>Community</em></h1>
+            <p class="hero-sub">Handcrafted pizzas, award-worthy espresso, and craft wings in Downtown San Jose. From morning shots to late-night bites.</p>
             <div class="hero-ctas">
-                <a href="https://www.doordash.com/store/first-street-pizza-&-espresso-san-jose-45321631/111875173/?srsltid=AfmBOooF5tbJDgVuNX8_iewOHyE0KOa158Z3M9ucXhXjOw_3j8r0JPi4" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
-                    Order Now
-                </a>
-                <a href="#location" class="btn btn-secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                    Visit Today
-                </a>
+                <a href="#menu" class="btn btn-primary">Explore Menu</a>
             </div>
         </div>
-    </div>
+    </header>
 
-    <!-- MARQUEE -->
-    <div class="marquee-wrap" aria-hidden="true">
-        <div class="marquee-track">
-            <span>Authentic Italian Craft</span>
-            <span>Espresso Perfection</span>
-            <span>Premium Craft Beer</span>
-            <span>Fresh Made Daily</span>
-            <span>Neighborhood Soul</span>
-            <span>Authentic Italian Craft</span>
-            <span>Espresso Perfection</span>
-            <span>Premium Craft Beer</span>
-            <span>Fresh Made Daily</span>
-            <span>Neighborhood Soul</span>
-        </div>
-    </div>
-
-    <!-- WHY US SECTION -->
-    <section class="why-us-section" id="why-us">
-        <div class="section-header" style="margin-bottom: 4rem;">
-            <span class="section-label">The First Street Difference</span>
-            <h2 class="section-title">Why <em>We Stand Out</em></h2>
-        </div>
-        <div class="why-us-grid">
-            <div class="why-card reveal">
-                <div class="why-card-icon">🍕</div>
-                <h3>Handcrafted Dough</h3>
-                <p>Every pizza begins with our signature dough, made fresh daily from carefully sourced flour. Zero shortcuts. Pure craft.</p>
-            </div>
-            <div class="why-card reveal" style="transition-delay: 0.1s;">
-                <div class="why-card-icon">☕</div>
-                <h3>Espresso Excellence</h3>
-                <p>Our baristas pull every shot with precision using ethically sourced, specialty-grade beans. Morning ritual perfected.</p>
-            </div>
-            <div class="why-card reveal" style="transition-delay: 0.2s;">
-                <div class="why-card-icon">🍺</div>
-                <h3>Curated Beer Selection</h3>
-                <p>From rare imports to local craft favorites, our beer menu celebrates quality, rarity, and the perfect pairing with pizza.</p>
-            </div>
-            <div class="why-card reveal" style="transition-delay: 0.3s;">
-                <div class="why-card-icon">🌿</div>
-                <h3>Premium Ingredients</h3>
-                <p>Quality tomatoes, real mozzarella, fresh basil from trusted growers. Quality in every bite.</p>
-            </div>
-            <div class="why-card reveal" style="transition-delay: 0.4s;">
-                <div class="why-card-icon">👥</div>
-                <h3>Community First</h3>
-                <p>We're not just a restaurant but we're your neighborhood gathering place. Known by name, valued for showing up authentically.</p>
-            </div>
-            <div class="why-card reveal" style="transition-delay: 0.5s;">
-                <div class="why-card-icon">⏰</div>
-                <h3>Open When You Need Us</h3>
-                <p>Afternoon espresso runs, Friday night pizzas, late-night gatherings. We're here for every moment that matters.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about-section" id="about-sec">
-        <div id="about">
-            <div class="about-text reveal">
-                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                    <span class="section-label">Our Story</span>
-                    <h2 class="section-title">Built on <em>Passion</em></h2>
-                </div>
-                <p>At First Street Pizza & Espresso, we believe that a delicous and authentic pizza shouldn't be easy to find.</p>
-                <p>We're a new neighborhood joint that hopes to prove ourselves worthy of becoming a staple in Downtown San Jose. Every pizza is hand-stretched moments before it hits the oven. Every espresso shot is pulled with intention. Every beer is chosen because we genuinely love it.</p>
-                <p>Our regulars know they'll get the same warm welcome whether it's their first visit or their hundredth. That consistency, that care, that's what sets us apart. We're not chasing trends but we're building something that lasts.</p>
-                
-                <div class="about-stats">
-                    <div class="stat reveal">
-                        <div class="stat-num" data-count="100" data-suffix="%">100%</div>
-                        <div class="stat-label">Fresh Daily</div>
-                    </div>
-                    <div class="stat reveal" style="transition-delay: 0.1s;">
-                        <div class="stat-num" data-count="7">Always</div>
-                        <div class="stat-label">Authentic</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-image-col reveal" style="transition-delay: 0.15s;">
-                <div class="about-img-frame">
-                    <img src="images/IMG_002.webp" alt="Handcrafted pizza fresh from the oven">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section class="experience-section">
-        <div class="experience-content reveal">
-            <h2 class="experience-heading">The Full <em>Experience</em></h2>
-            <p class="experience-sub">From the moment you walk through our doors, you're part of a community that values quality, authenticity, and the simple joy of great food shared with great people.</p>
-            <div class="experience-stats">
-                <div class="exp-stat">
-                    <div class="exp-stat-num">15+</div>
-                    <div class="exp-stat-label">Signature Pizzas</div>
-                </div>
-                <div class="exp-stat">
-                    <div class="exp-stat-num">10+</div>
-                    <div class="exp-stat-label">Espresso Drinks</div>
-                </div>
-                <div class="exp-stat">
-                    <div class="exp-stat-num">9+</div>
-                    <div class="exp-stat-label">Craft Beers on Tap</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MENU -->
+    <!-- MENU SECTION WITH WINGS -->
     <section class="menu-section" id="menu">
-        <div class="section-header reveal">
-            <span class="section-label">The Menu</span>
-            <h2 class="section-title">Carefully <em>Crafted</em></h2>
-        </div>
-
         <div id="menu-inner">
-            <div class="menu-tabs reveal" style="transition-delay: 0.1s;" role="tablist">
-                <button class="menu-tab active" data-filter="all">All Items</button>
-                <button class="menu-tab" data-filter="pizza">🍕 Hot Pizza</button>
-                <button class="menu-tab" data-filter="salads">🥗 Fresh Salads</button>
-                <button class="menu-tab" data-filter="pasta">🍝 Hearty Pasta</button>
-                <button class="menu-tab" data-filter="wings">🍗 Crispy Wings</button>
-                <button class="menu-tab" data-filter="drinks">🍺 Beer & Wine</button>
-                <button class="menu-tab" data-filter="coffee">☕ The Grind Bar</button>
+            <div class="section-header">
+                <span class="section-label">Our Offerings</span>
+                <h2 class="section-title">The Culinary <em>Collection</em></h2>
             </div>
 
-            <!-- PIZZA CATEGORY -->
-            <div class="menu-category reveal" data-category="pizza">
-                <div class="menu-grid">
-                    <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">The Italian 🍕</h3>
-                                <span class="chef-pick">Chef's Pick</span>
-                            </div>
-                            <p class="item-desc">Pepperoni, Italian Sausage, Fresh Basil, Mozzarella, Tomatoes, Mushrooms, Bell Peppers & Garlic.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$22.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$29.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$34.95</strong></div>
-                        </div>
-                    </div>
+            <!-- Menu Category Tabs -->
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-target="wings">Chicken Wings</button>
+                <button class="menu-tab" data-target="pizza">Pizzas</button>
+            </div>
 
-                    <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">First Street Special 🍕</h3>
-                                <span class="chef-pick">House Fave</span>
-                            </div>
-                            <p class="item-desc">Creamy Alfredo Sauce, Mozzarella, Roasted Chicken, Mushrooms, Jalapeños, Parmesan & Basil.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$25.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$31.95</strong></div>
-                        </div>
-                    </div>
+            <!-- CHICKEN WINGS SECTION (Fixed & Structured) -->
+            <div class="menu-category" id="wings">
+                <div class="menu-grid">
                     
+                    <!-- Wing Item 1 -->
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                <h3 class="item-name">Classic Margherita 🍕</h3>
+                                <h3 class="item-name">Classic Buffalo Wings</h3>
+                                <span class="chef-pick">Fan Favorite</span>
                             </div>
-                            <p class="item-desc">Fresh Basil, Bubbling Mozzarella, Roma Tomatoes & Extra Virgin Olive Oil.</p>
+                            <p class="item-desc">Crispy jumbo wings tossed in our signature house-made tangy buffalo sauce, served with crisp celery and house-made blue cheese dressing.</p>
                         </div>
                         <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$17.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$24.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$30.95</strong></div>
+                            <div class="price-bubble">
+                                <span>6 Pieces</span>
+                                <strong>$12.50</strong>
+                            </div>
+                            <div class="price-bubble">
+                                <span>12 Pieces</span>
+                                <strong>$22.00</strong>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Wing Item 2 -->
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                 <h3 class="item-name">Garden Veggies Pizza</h3>
-                                <span class="chef-pick" style="background:var(--leaf);">Vegetarian</span>
+                                <h3 class="item-name">Honey Garlic Glaze</h3>
+                                <span class="chef-pick">Chef's Choice</span>
                             </div>
-                            <p class="item-desc">Spinach, Mozzarella, Tomatoes, Mushrooms, Bell Peppers, Onions & Garlic.</p>
+                            <p class="item-desc">Golden-crisp wings coated in a sticky, savory-sweet organic honey garlic reduction, garnished with toasted sesame seeds and chopped scallions.</p>
                         </div>
                         <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$25.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$31.95</strong></div>
+                            <div class="price-bubble">
+                                <span>6 Pieces</span>
+                                <strong>$13.00</strong>
+                            </div>
+                            <div class="price-bubble">
+                                <span>12 Pieces</span>
+                                <strong>$23.00</strong>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Wing Item 3 -->
                     <div class="menu-card">
                         <div>
                             <div class="menu-card-header">
-                                 <h3 class="item-name">Premium Pepperoni & Cheese</h3>
+                                <h3 class="item-name">Fire-Roasted Mango Habanero</h3>
                             </div>
-                            <p class="item-desc">The timeless classic made with the finest imported pepperoni and fresh mozzarella.</p>
+                            <p class="item-desc">Not for the faint of heart! Sweet tropical mango puree infused with fiery habanero peppers for a punchy kick that builds with every bite.</p>
                         </div>
                         <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$25.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$31.95</strong></div>
+                            <div class="price-bubble">
+                                <span>6 Pieces</span>
+                                <strong>$13.50</strong>
+                            </div>
+                            <div class="price-bubble">
+                                <span>12 Pieces</span>
+                                <strong>$24.00</strong>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                 <h3 class="item-name">Hawaiian Pizza 🍕</h3>
-                            </div>
-                            <p class="item-desc">Pizza Sauce, Mozzarella, Pineapple & Ham.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$25.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$30.95</strong></div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                 <h3 class="item-name">Super Meat Pizza</h3>
-                                <span class="chef-pick" style="background:var(--sage);">Meaty</span>
-                            </div>
-                            <p class="item-desc">Pizza sauce, Mozzarella, Pepperoni, Ham & Chicken.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$19.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$26.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$31.95</strong></div>
-                        </div>
-                    </div>
-
-                     <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">BBQ Chicken Pizza</h3>
-                                <span class="chef-pick" style="background:var(--leaf);">Delicious</span>
-                            </div>
-                            <p class="item-desc">Tangy BBQ Sauce, Mozzarella, Chicken, Pickled Onions, Habanero & Garlic.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$18.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$25.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$30.95</strong></div>
-                        </div>
-                    </div>
-
-                    <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                 <h3 class="item-name">Premium Cheese Pizza</h3>
-                                <span class="chef-pick" style="background:var(--moss);">Classic</span>
-                            </div>
-                            <p class="item-desc">Simple, satisfying, unforgettable. The foundation of great pizza.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Small</span><strong>$15.95</strong></div>
-                            <div class="price-bubble"><span>Medium</span><strong>$22.95</strong></div>
-                            <div class="price-bubble"><span>Large</span><strong>$28.95</strong></div>
-                        </div>
-                    </div>
-
-                    
-                     <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Margherita Slice 🍕</h3>
-                            </div>
-                            <p class="item-desc">Fresh basil, mozzarella, tomato—pizza done right.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
-                        </div>
-                    </div>
-                     <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Pepperoni Slice 🍕</h3>
-                            </div>
-                            <p class="item-desc">Classic combo that never goes out of style.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
-                        </div>
-                    </div>
-
-                     <div class="menu-card">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Cheese Pizza Slice</h3>
-                            </div>
-                            <p class="item-desc">Pure comfort in a single slice.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Slice</span><strong>$6.50</strong></div>
-                        </div>
-                    </div>
-                  </div>  
-            </div>
-
-            <!-- SALADS, PASTA & WINGS -->
-            <div class="menu-grid" style="margin-top: 2rem;">
-                
-                <div class="menu-category reveal" data-category="salads">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Insalata Della Casa 🥗</h3>
-                            </div>
-                            <p class="item-desc">Crisp Romaine, Mushrooms, Bell Peppers, Cherry Tomato, Onions & Almonds.</p>
-                            <p class="item-note">+ Add Grilled Chicken $3.99</p>
-                        </div>
-                        <div class="price-row">
-                           <div class="price-bubble"><span>Full Size</span><strong>$13.95</strong></div> 
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="menu-category reveal" data-category="salads">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Insalata Caesar 🥗</h3>
-                            </div>
-                            <p class="item-desc">Romaine Lettuce, Parmesan Cheese, Croutons.</p>
-                            <p class="item-note">+ Add Grilled Chicken $3.99</p>
-                        </div>
-                        <div class="price-row">
-                           <div class="price-bubble"><span>Full Size</span><strong>$13.95</strong></div> 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-category reveal" data-category="pasta">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Penne Pomodoro Sausage 🍝</h3>
-                            </div>
-                            <p class="item-desc">Penne Pasta, House Tomato Sauce, Basil, Mozzarella, Italian Sausage & Onions.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Hearty Plate</span><strong>$17.00</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                
-
-                <div class="menu-category reveal" data-category="wings">
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header">
-                                <h3 class="item-name">Ethiopian Berbere Spice Flavored Chicken Wings</h3>
-                            </div>
-                            <p class="item-desc">Made with our in-house Ethiopian Berbere sauce.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>6 pcs</span><strong>$6.99</strong></div>
-                            <div class="price-bubble"><span>12 pcs</span><strong>$12.99</strong></div>
-                            <div class="price-bubble"><span>24 pcs</span><strong>$24.99</strong></div>
-                        </div>
-                        <div class="menu-card-header">
-                                <h3 class="item-name">Buffalo Chicken Wings</h3>
-                            </div>
-                            <p class="item-desc">Authentic Buffalo, New York-style chicken wings, handspun in our in-house buttery buffalo sauce.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>6 pcs</span><strong>$6.99</strong></div>
-                            <div class="price-bubble"><span>12 pcs</span><strong>$12.99</strong></div>
-                            <div class="price-bubble"><span>24 pcs</span><strong>$24.99</strong></div>
-                        </div>
-                    <div class="menu-card-header">
-                                <h3 class="item-name">BBQ Chicken Wings</h3>
-                            </div>
-                            <p class="item-desc">Golden and crispy on the outside, ridiculously tender on the inside and with just the right amount of BBQ glaze.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>6 pcs</span><strong>$6.99</strong></div>
-                            <div class="price-bubble"><span>12 pcs</span><strong>$12.99</strong></div>
-                            <div class="price-bubble"><span>24 pcs</span><strong>$24.99</strong></div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            
-               <!-- Draft Beers -->
-            <div class="menu-category reveal" data-category="draft beers">
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Domestic Beers Selection</div>
+            <!-- PIZZA SECTION (Placeholder for tab switching) -->
+            <div class="menu-category hidden" id="pizza">
                 <div class="menu-grid">
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Sierra Nevada - Hazy IPA</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$7.00</strong></div></div>
-                    </div>
-                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Firestone Walker - 805</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$7.00</strong></div></div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Bluemoon</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$7.00</strong></div></div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Coors Banquet</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>12oz Bottle</span><strong>$7.00</strong></div></div>
-                    </div>
-                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Coors Light</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$7.00</strong></div></div>
-                         <div class="price-row"><div class="price-bubble"><span>12oz Bottle</span><strong>$7.00</strong></div></div>
-                    </div>
-                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Buzzball</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span></span><strong>$5.99</strong></div></div>
-                    </div>
-                </div>
-
-                <!-- Draft Beers Imported -->
-            <div class="menu-category reveal" data-category="draft beers">
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Imported Beers Selection</div>
-                <div class="menu-grid">
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Modelo</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$8.00</strong></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>12oz. Bottle</span><strong>$8.00</strong></div></div>
-                    </div>
-                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Negra Modelo</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$8.00</strong></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>12oz. Bottle</span><strong>$8.00</strong></div></div>
-                    </div>
-                     <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Pacifico</h3></div></div>
-                        <div class="price-row"><div class="price-bubble"><span>Draft Pint</span><strong>$8.00</strong></div></div>
-                         <div class="price-row"><div class="price-bubble"><span>12oz Bottle</span><strong>$8.00</strong></div></div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Blue Nile - Premium Gold Lager</h3></div></div>
-                         <div class="price-row"><div class="price-bubble"><span>12oz Bottle</span><strong>$8.00</strong></div></div>
-                    </div>
-                </div>
-
-
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Wine Selection</div>
-                <div class="menu-grid">
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Red Wine 🍷</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Glass</span><strong>$15.00</strong></div>
-                            <div class="price-bubble"><span>Bottle</span><strong>$50.00</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">White Wine</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Glass</span><strong>$14.00</strong></div>
-                            <div class="price-bubble"><span>Bottle</span><strong>$45.00</strong></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- THE GRIND BAR (COFFEE) -->
-            <div class="menu-category reveal" data-category="coffee">
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Hot Drinks</div>
-                <div class="menu-grid">
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Coffee ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$3.15</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$3.45</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$3.75</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Americano ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$3.85</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$4.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$4.85</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Latte ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.65</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.65</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Cappuccino ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.65</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.65</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Mocha ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.85</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$6.35</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Caramel Macchiato ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.65</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$6.15</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Chai ☕</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.85</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.65</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Matcha 🍵</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.85</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.65</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Hot Chocolate ♨️</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.15</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$4.65</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.15</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Iced Drinks</div>
-                <div class="menu-grid">
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Iced Americano</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$3.85</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$4.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$4.85</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Iced Latte</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$4.85</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.35</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.85</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Iced Mocha</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$5.35</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$6.15</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$6.75</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Iced Caramel Macchiato</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$5.35</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.85</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$6.35</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div><div class="menu-card-header"><h3 class="item-name">Iced Matcha</h3></div></div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>SM</span><strong>$5.15</strong></div>
-                            <div class="price-bubble"><span>MD</span><strong>$5.35</strong></div>
-                            <div class="price-bubble"><span>LG</span><strong>$5.85</strong></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-label" style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; color: var(--leaf);">Espresso & Beverages</div>
-                <div class="menu-grid">
-                    <div class="menu-card h-100">
+                    <div class="menu-card">
                         <div>
-                            <div class="menu-card-header"><h3 class="item-name">Espresso Shots</h3></div>
-                            <p class="item-desc">Precisely pulled from beans we obsess over. Pure espresso ritual.</p>
+                            <div class="menu-card-header">
+                                <h3 class="item-name">Margherita Classica</h3>
+                                <span class="chef-pick">Signature</span>
+                            </div>
+                            <p class="item-desc">San Marzano tomato sauce, fresh fior di latte mozzarella, fresh basil, and extra virgin olive oil on our 48-hour fermented crust.</p>
                         </div>
                         <div class="price-row">
-                            <div class="price-bubble"><span>Single</span><strong>$3.15</strong></div>
-                            <div class="price-bubble"><span>Double</span><strong>$3.45</strong></div>
-                            <div class="price-bubble"><span>Triple</span><strong>$3.75</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header"><h3 class="item-name">Flavor Add-ons</h3></div>
-                            <p class="item-desc">Make your drink uniquely yours.</p>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Extra Flavor</span><strong>$0.75</strong></div>
-                            <div class="price-bubble"><span>Extra Shot</span><strong>$2.50</strong></div>
-                        </div>
-                    </div>
-                    <div class="menu-card h-100">
-                        <div>
-                            <div class="menu-card-header"><h3 class="item-name">Beverages</h3></div>
-                        </div>
-                        <div class="price-row">
-                            <div class="price-bubble"><span>Soft Drink</span><strong>$2.99</strong></div>
-                            <div class="price-bubble"><span>Orange Juice</span><strong>$4.99</strong></div>
-                            <div class="price-bubble"><span>Energy Drink</span><strong>$4.99</strong></div>
+                            <div class="price-bubble">
+                                <span>Whole Pie</span>
+                                <strong>$19.00</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1631,208 +488,36 @@
         </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery-section">
-        <div class="section-header reveal">
-            <span class="section-label">Gallery</span>
-            <h2 class="section-title">Life at <em>First Street</em></h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item reveal"><img src="images/fp5.webp" alt="Premium Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Fresh From Fire</div><div class="gallery-caption-sub">The Art of Pizza</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_4096.webp" alt="BBQ Chicken Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Ice Cold Refreshment</div><div class="gallery-caption-sub">Craft Beer Culture</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3207.webp" alt="Storefront"><div class="gallery-caption"><div class="gallery-caption-text">Our Doors Welcome You</div><div class="gallery-caption-sub">Downtown Destination</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3212.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Behind the Bar</div><div class="gallery-caption-sub">Curated Selection</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2621.webp" alt="Half & Half Pepperoni & Cheese"><div class="gallery-caption"><div class="gallery-caption-text">Half & Half Heaven</div><div class="gallery-caption-sub">Best of Both Worlds</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2627.webp" alt=""><div class="gallery-caption"><div class="gallery-caption-text">Loaded Combo</div><div class="gallery-caption-sub">Maximum Flavor</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_2533.webp" alt="BBQ Chicken"><div class="gallery-caption"><div class="gallery-caption-text">BBQ Perfection</div><div class="gallery-caption-sub">Sweet & Smoky</div></div></div>
-            <div class="gallery-item reveal"><img src="images/Pizza_001.webp" alt="Pizza"><div class="gallery-caption"><div class="gallery-caption-text">In The Zone</div><div class="gallery-caption-sub">Signature Creation</div></div></div>
-            <div class="gallery-item reveal"><img src="images/fp3.webp" alt="Margherita Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Tropical Twist</div><div class="gallery-caption-sub">Island Vibes</div></div></div>
-            <div class="gallery-item reveal"><img src="images/IMG_3193.webp" alt="Hawaiian Pizza"><div class="gallery-caption"><div class="gallery-caption-text">Summer Ready</div><div class="gallery-caption-sub">Pineapple & Ham</div></div></div>
-            
-           
-        </div>
-    </section>
-
-    <!-- LOCATION & HOURS -->
-    <section class="location-section" id="location">
-        <div class="section-header reveal">
-            <span class="section-label">Visit Us</span>
-            <h2 class="section-title">Find Us <em>Downtown</em></h2>
-        </div>
-        <div class="location-grid">
-            <div class="info-card reveal">
-                <h3>Where We Are</h3>
-                <address>
-                    <strong>📍 Address</strong>
-                    <p>33 S. 1st St<br>San Jose, CA 95113</p>
-                    <strong>📞 Call Us</strong>
-                    <p><a href="tel:+14083525371">(408) 352-5371</a></p>
-                    <strong>🌐 Social Media</strong>
-                    <p><a href="https://www.instagram.com/firststreetpizza/" target="_blank">@firstStreetPizza - Instagram</a></p>
-                    <p style="margin-top: 1rem;">
-                        <strong style="display: block; margin-bottom: 0.5rem;">Order Online:</strong>
-                        <a href="https://www.doordash.com/store/first-street-pizza-&-espresso-san-jose-45321631/111875173/?srsltid=AfmBOooF5tbJDgVuNX8_iewOHyE0KOa158Z3M9ucXhXjOw_3j8r0JPi4" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-right: 1rem;">🚗 DoorDash</a>
-                        <a href="https://www.ubereats.com/store/first-st-pizza-and-espresso-san-jose-ca/_en_m5iFQmywQHFMfTmfVQ?srsltid=AfmBOoqKpZJl79kCKjJHJDfQQKUzV5SFnettzMQnrAWqXirCnO_GogSx&from_challenge=1" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-right: 1rem;">🛵 UberEats</a>
-                        <a href="https://grubhub.com/restaurant/first-street-pizza--espresso-33-s-1st-st-san-jose/15193928?classicAffiliateId=%2Fr%2Fw%2F15193928%2F&utm_source=restaurant.grubhub.com&utm_medium=OOL&utm_campaign=order%20online&utm_content=15193928" target="_blank" rel="noopener noreferrer" style="display: inline-block;">🍽️ Grubhub</a>
-                    </p>
-                    <strong style="display: block; margin-top: 1.5rem;">✨ The Vibe  ✨</strong>
-                    <p>Your neighborhood gathering spot for morning espresso shots, lunch slice runs and late-night pints when the game is on. Casual, welcoming, always genuine.</p>
-                </address>
-            </div>
-            <div class="info-card reveal" style="transition-delay: 0.1s;">
-                <h3>Open & Ready</h3>
-                <ul class="hours-list" id="hoursList">
-                    <li data-day="1"><span class="day">Monday</span><span class="time">Closed</span></li>
-                    <li data-day="2"><span class="day">Tuesday</span><span class="time">Closed</span></li>
-                    <li data-day="3"><span class="day">Wednesday</span><span class="time">Closed</span></li>
-                    <li data-day="4"><span class="day">Thursday</span><span class="time">3:00 PM – Midnight</span></li>
-                    <li data-day="5"><span class="day">Friday</span><span class="time">3:00 PM – Midnight</span></li>
-                    <li data-day="6"><span class="day">Saturday</span><span class="time">3:00 PM – Midnight</span></li>
-                    <li data-day="0"><span class="day">Sunday</span><span class="time">3:00 PM – Midnight</span></li>
-                </ul>
-            </div>
-            <div class="map-frame reveal">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.0!2d-121.8881!3d37.3352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb8d7cba!2s33+S+1st+St%2C+San+Jose%2C+CA+95113!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="First Street Pizza & Espresso Location"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- DELIVERY OPTIONS -->
-    <section style="background: linear-gradient(135deg, var(--sage) 0%, var(--leaf) 100%); padding: 4rem 3rem; text-align: center;">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--cream); margin-bottom: 1rem;">Order for Delivery</h2>
-            <p style="font-size: 1.15rem; color: rgba(255, 253, 247, 0.9); margin-bottom: 2.5rem; line-height: 1.7;">Can't make it downtown? We deliver straight to your door through your favorite platforms. Same quality, same love, delivered fresh.</p>
-            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="https://www.doordash.com/store/first-street-pizza-&-espresso-san-jose-45321631/111875173/?srsltid=AfmBOooF5tbJDgVuNX8_iewOHyE0KOa158Z3M9ucXhXjOw_3j8r0JPi4" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.2rem 2.5rem; background: white; color: var(--sage); border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; transition: all 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.15);" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.25)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';">
-                    🚗 Order on DoorDash
-                </a>
-                <a href="https://www.ubereats.com/store/first-st-pizza-and-espresso-san-jose-ca/_en_m5iFQmywQHFMfTmfVQ?srsltid=AfmBOoqKpZJl79kCKjJHJDfQQKUzV5SFnettzMQnrAWqXirCnO_GogSx&from_challenge=1" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.2rem 2.5rem; background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid white; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; transition: all 0.3s; backdrop-filter: blur(10px);" onmouseover="this.style.background='white'; this.style.color='var(--sage)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.color='white'; this.style.transform='translateY(0)';">
-                    🛵 Order on UberEats
-                </a>
-                <a href="https://www.grubhub.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.2rem 2.5rem; background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid white; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.1em; transition: all 0.3s; backdrop-filter: blur(10px);" onmouseover="this.style.background='white'; this.style.color='var(--sage)'; this.style.transform='translateY(-4px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.color='white'; this.style.transform='translateY(0)';">
-                    🍽️ Grubhub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-brand">First Street Pizza & Espresso</div>
-        <div class="footer-tagline">Craft Pizza | Quality Espresso | Community</div>
-        <div class="social-links">
-            <a href="https://www.instagram.com/firststreetpizza" target="_blank" aria-label="Instagram" class="social-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-            </a>
-            <a href="tel:+14083525371" aria-label="Call us" class="social-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-            </a>
-        </div>
-        <p class="footer-copy">© 2026 First Street Pizza & Espresso. Handcrafted with passion in Downtown San Jose.</p>
-    </footer>
-
+    <!-- JavaScript for Interactive Tabs and Mobile Menu -->
     <script>
-        // Nav background change on scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 60);
-        });
-
-        // Hamburger Menu Toggle
+        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const navLinksMenu = document.getElementById('nav-links');
-        
+        const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
-            navLinksMenu.classList.toggle('open');
+            navLinks.classList.toggle('active');
         });
 
-        // Close mobile nav when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinksMenu.classList.remove('open');
-            });
-        });
+        // Menu Tab Filtering
+        const tabs = document.querySelectorAll('.menu-tab');
+        const categories = document.querySelectorAll('.menu-category');
 
-        // Scroll reveals with staggered timing
-        const reveals = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((e, index) => {
-                if (e.isIntersecting) {
-                    e.target.style.animationDelay = (index * 0.05) + 's';
-                    e.target.classList.add('visible');
-                    revealObserver.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        reveals.forEach(el => revealObserver.observe(el));
-
-        // Highlight today's hours
-        const today = new Date().getDay();
-        const todayRow = document.querySelector(`#hoursList li[data-day="${today}"]`);
-        if (todayRow) todayRow.classList.add('today');
-
-        // Menu category filtering with smooth transitions
-        const menuTabs = document.querySelectorAll('.menu-tab');
-        const menuCategories = document.querySelectorAll('.menu-category');
-        menuTabs.forEach(tab => {
+        tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                const filter = tab.dataset.filter;
-                menuTabs.forEach(t => t.classList.remove('active'));
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                menuCategories.forEach(cat => {
-                    if (filter === 'all' || cat.dataset.category === filter) {
-                        cat.style.display = 'block';
-                        cat.style.animation = 'none';
-                        cat.offsetHeight;
-                        cat.style.animation = 'fadeUp 0.6s ease forwards';
+
+                // Hide all categories and show selected
+                const target = tab.getAttribute('data-target');
+                categories.forEach(cat => {
+                    if (cat.id === target) {
+                        cat.classList.remove('hidden');
                     } else {
-                        cat.style.display = 'none';
+                        cat.classList.add('hidden');
                     }
                 });
             });
         });
-
-        // Number counter animation
-        function animateCount(el) {
-            const target = parseInt(el.dataset.count);
-            const suffix = el.dataset.suffix || '';
-            if (isNaN(target)) return;
-            const duration = 2000;
-            const start = performance.now();
-            function step(now) {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 4);
-                el.textContent = Math.round(eased * target) + suffix;
-                if (progress < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        }
-        const statNums = document.querySelectorAll('.stat-num[data-count]');
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    animateCount(e.target);
-                    statObserver.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        statNums.forEach(el => statObserver.observe(el));
-
-        // Subtle parallax on scroll for enhanced depth
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero-bg-img');
-            parallaxElements.forEach(el => {
-                el.style.transform = `translateY(${scrolled * 0.5}px)`;
-            });
-        }, { passive: true });
     </script>
 </body>
 </html>
