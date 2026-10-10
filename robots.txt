@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace YOURDOMAIN.com with the live domain
+Sitemap: https://www.firststreetpizzaandespresso.com/sitemap.xml
